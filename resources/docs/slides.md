@@ -1,4 +1,23 @@
-## 线上购票平台
+---
+theme: purplin
+title: 线上购票平台
+colorSchema: 'light'
+layout: image-x
+image: 'https://pic1.imgdb.cn/item/6359679816f2c2beb1062a61.jpg'
+imageOrder: 1
+---
+
+# 线上购票平台
+
+演出、赛事票务信息一站式服务
+
+第七小组
+- 2053300 胡锦晖
+- 2052220 白珂睿
+- 2053386 高骏骋
+- 2053385 高逸轩
+
+---
 
 ### 项目背景
 
@@ -8,7 +27,10 @@
 
 针对以上痛点，本项目将搭建一个线上购票平台，为各类线下娱乐形式提供售票服务，为用户提供演唱会、话剧、体育比赛、单口喜剧、Livehouse等品类的购票服务，支持活动宣传、查看活动的详细信息、选座、订票、出票等功能。
 
-<div align=center><img src="./resources/live.jpg"/></div>
+---
+layout: two-cols
+position: center
+---
 
 ### 项目功能
 
@@ -22,6 +44,8 @@
 - 用户转卖已有票
 - 在论坛进行讨论
 
+::right::
+
 同时平台管理员可以对平台信息进行处理：
 
 - 添加、删除、修改和查询订单
@@ -33,11 +57,12 @@
 - 支持不同的编程语言和框架
 - 支持独立或分布式部署
 
-### 项目架构
+---
+layout: image-right
+image: 'https://pic1.imgdb.cn/item/63596e4c16f2c2beb10dffdb.png'
+---
 
-<div align=center><img src="./resources/architecture.png"/></div>
-
-### 技术栈
+### 项目架构及技术栈
 
 - 前端框架：Vue3
 - 后端框架：SpringBoot
@@ -48,6 +73,8 @@
 - 数据库：Mysql
 - 版本管理工具：Github/Git
 - 团队协作工具：YouTrack
+
+---
 
 ### 时间线
 
@@ -61,3 +88,8 @@
 
 第五步：完成制作最终演示，完善项目和开发手册等
 
+---
+layout: center
+---
+
+# 感谢聆听！
