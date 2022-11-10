@@ -3,6 +3,7 @@
 - 124.220.158.211:3306
 - user: root
 - password: root
+- database: ticket
 
 ## Entity
 
