@@ -1,3 +1,9 @@
+## MySQL
+
+- 124.220.158.211:3306
+- user: root
+- password: root
+
 ## Entity
 
 - user
@@ -30,8 +36,8 @@
   - location_id
   - seats_id
 
-- ticket
-  - ticket_id *
+- ticket_stall
+  - ticket_stall_id *
   - histrionics_id
   - description
   - price
@@ -39,6 +45,13 @@
   - remaining
   - sold
   - position
+
+- ticket
+  - ticket_id *
+  - ticket_stall_id
+  - identity_number
+  - position
+  - status
 
 - location
   - location_id *
@@ -49,7 +62,7 @@
 - seats
   - seats_id *
   - location_id
-  - todo
+  - seat_map
 
 - resale
   - resale_id *
@@ -77,4 +90,15 @@
   - context
   - likes
 
+- order
+  - user_id
+  - order_id
+  - order_time
+  - pay_time
+  - status
+
 ## Relation
+
+- purchase
+  - order_id
+  - ticket_id
