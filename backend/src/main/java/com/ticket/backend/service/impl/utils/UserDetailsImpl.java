@@ -1,9 +1,9 @@
 package com.ticket.backend.service.impl.utils;
 
 import com.ticket.backend.pojo.User;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

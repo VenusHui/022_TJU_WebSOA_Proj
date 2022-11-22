@@ -17,12 +17,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserMapper userMapper;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_name", username);
+        queryWrapper.eq("user_name", userName);
         User user = userMapper.selectOne(queryWrapper);
         if (user == null) {
-            throw new UsernameNotFoundException(username + " 不存在");
+            throw new UsernameNotFoundException(userName + " 不存在");
         }
         return new UserDetailsImpl(user);
     }
