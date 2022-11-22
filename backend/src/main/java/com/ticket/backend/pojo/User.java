@@ -1,5 +1,6 @@
 package com.ticket.backend.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    @TableId(value="user_id")
+    @TableId(value = "user_id", type = IdType.AUTO)
     private Integer user_id;
     private String user_name;
     private String password;
