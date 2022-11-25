@@ -13,12 +13,12 @@ import java.util.Date;
 @AllArgsConstructor
 public class User {
     @TableId(value = "user_id", type = IdType.AUTO)
-    private Integer user_id;
-    private String user_name;
+    private Integer userId;
+    private String userName;
     private String password;
-    private Integer user_type;
-    private String phone_number;
-    private Date register_date;
+    private Integer userType;
+    private String phoneNumber;
+    private String registerDate;
     private String city;
     private Integer credit;
 }

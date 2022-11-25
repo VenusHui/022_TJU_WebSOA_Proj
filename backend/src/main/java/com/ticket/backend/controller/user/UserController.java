@@ -13,9 +13,8 @@ public class UserController {
 
     @Autowired
     UserMapper userMapper;
-    @RequestMapping("/user/getAll/")
+    @RequestMapping("/users/")
     public List<User> getAll() {
         return userMapper.selectList(null);
     }
-
 }

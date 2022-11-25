@@ -15,6 +15,7 @@ import java.util.Collection;
 public class UserDetailsImpl implements UserDetails {
 
     private User user;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -27,7 +28,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getUser_name();
+        return user.getUserName();
     }
 
     @Override
