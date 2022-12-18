@@ -16,9 +16,8 @@ public class User {
     private Integer userId;
     private String userName;
     private String password;
-    private Integer userType;
     private String phoneNumber;
-    private String registerDate;
+    private String register;
     private String city;
     private Integer credit;
 }
