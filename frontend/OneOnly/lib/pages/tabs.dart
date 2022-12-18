@@ -15,7 +15,7 @@ class _TabsState extends State<Tabs> {
   int _currentIndex = 0;
   final List<Widget> _pages = [
     //
-    AppBarSearch(),
+    HomePage(),
     LivePage(),
     MyTickets(),
     Mine()
