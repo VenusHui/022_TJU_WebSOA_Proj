@@ -1,4 +1,4 @@
-package com.ticket.backend.config.filter.user;
+package com.ticket.backend.controller;
 
 import com.ticket.backend.assembler.UserModelAssembler;
 import com.ticket.backend.mapper.UserMapper;

@@ -1,6 +1,6 @@
 package com.ticket.backend.assembler;
 
-import com.ticket.backend.config.filter.user.UserController;
+import com.ticket.backend.controller.UserController;
 import com.ticket.backend.pojo.User;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
