@@ -1,4 +1,4 @@
-package com.ticket.backend.assembler;
+package com.ticket.backend.service.impl.utils.assembler;
 
 import com.ticket.backend.controller.UserController;
 import com.ticket.backend.pojo.User;

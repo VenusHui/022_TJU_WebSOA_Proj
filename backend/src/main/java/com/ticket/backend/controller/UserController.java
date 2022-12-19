@@ -1,20 +1,14 @@
 package com.ticket.backend.controller;
 
-import com.ticket.backend.assembler.UserModelAssembler;
 import com.ticket.backend.mapper.UserMapper;
-import com.ticket.backend.pojo.User;
+import com.ticket.backend.service.user.LoginService;
+import com.ticket.backend.service.user.RegisterService;
+import com.ticket.backend.service.user.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.CollectionModel;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import java.util.Map;
 
 @RestController
 public class UserController {
@@ -22,23 +16,59 @@ public class UserController {
     @Autowired
     UserMapper userMapper;
 
-    private final UserModelAssembler assembler;
+    @Autowired
+    LoginService loginService;
 
-    public UserController(UserModelAssembler assembler) {
-        this.assembler = assembler;
+    @Autowired
+    RegisterService registerService;
+
+    @Autowired
+    UserInfoService userInfoService;
+
+
+    @GetMapping("/users/")
+    public ResponseEntity<Object> getAll() {
+        return ResponseEntity.ok(userInfoService.getAll());
     }
 
-    @RequestMapping("/users/")
-    public CollectionModel<EntityModel<User>> getAll() {
-        List<EntityModel<User>> users = userMapper.selectList(null).stream()
-                .map(assembler::toModel)
-                .collect(Collectors.toList());
-        return CollectionModel.of(users, linkTo(methodOn(UserController.class).getAll()).withSelfRel());
+    @PostMapping("/users/")
+    /**
+     * @param form:
+     * @return: ResponseEntity<Map<String,Object>>
+     * @author: VenusHui
+     * @description: 用户注册
+     * @date: 2022/12/19 23:03
+     */
+    public ResponseEntity<Object> register(@RequestParam Map<String, Object> form) {
+        String userName = form.get("user_name").toString();
+        String password = form.get("password").toString();
+        String phoneNumber = form.get("phone_number").toString();
+        return ResponseEntity.ok(registerService.register(userName, password, phoneNumber));
     }
 
-    @RequestMapping("/users/{userId}/")
-    public EntityModel<User> getUser(@PathVariable Integer userId) {
-        User user = userMapper.selectById(userId);
-        return assembler.toModel(user);
+    @GetMapping("/users/{userId}/")
+    /**
+     * @param userId:
+     * @return: ResponseEntity<Object>
+     * @author: VenusHui
+     * @description: 查询指定用户信息
+     * @date: 2022/12/20 0:35
+     */
+    public ResponseEntity<Object> getUser(@PathVariable Integer userId) {
+        return ResponseEntity.ok(userInfoService.getUser(userId));
+    }
+
+    @PostMapping("/users/token/")
+    /**
+     * @param form:
+     * @return: ResponseEntity<Map<String,Object>>
+     * @author: VenusHui
+     * @description: 用户登录
+     * @date: 2022/12/19 23:05
+     */
+    public ResponseEntity<Map<String, Object>> getToken(@RequestParam Map<String, Object> form) {
+        String userName = form.get("user_name").toString();
+        String password = form.get("password").toString();
+        return ResponseEntity.ok(loginService.getToken(userName, password));
     }
 }
