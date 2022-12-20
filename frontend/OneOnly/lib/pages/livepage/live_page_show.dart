@@ -64,7 +64,8 @@ class _live_page_showState extends State<live_page_show> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (BuildContext context) => live_detail(),
+                  builder: (BuildContext context) =>
+                      live_detail(live_id: "123"),
                 ),
               );
             },
