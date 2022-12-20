@@ -1,8 +1,8 @@
 package com.ticket.ticketsystem.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ticket.ticketsystem.mapper.PurchaseMapper;
-import com.ticket.ticketsystem.mapper.TicketMapper;
+import com.ticket.ticketsystem.controller.mapper.PurchaseMapper;
+import com.ticket.ticketsystem.controller.mapper.TicketMapper;
 import com.ticket.ticketsystem.pojo.Purchase;
 import com.ticket.ticketsystem.pojo.Ticket;
 import com.ticket.ticketsystem.service.OrderTicketService;

@@ -1,7 +1,7 @@
 package com.ticket.ticketsystem.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ticket.ticketsystem.mapper.TicketMapper;
+import com.ticket.ticketsystem.controller.mapper.TicketMapper;
 import com.ticket.ticketsystem.pojo.Ticket;
 import com.ticket.ticketsystem.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;

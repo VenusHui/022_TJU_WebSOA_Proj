@@ -1,4 +1,4 @@
-package com.ticket.ticketsystem.mapper;
+package com.ticket.ticketsystem.controller.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.ticket.ticketsystem.pojo.Purchase;
