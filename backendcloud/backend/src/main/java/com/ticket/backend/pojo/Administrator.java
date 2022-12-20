@@ -2,23 +2,15 @@ package com.ticket.backend.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-
-import java.sql.Timestamp;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Administrator {
     @TableId(value = "user_id", type = IdType.AUTO)
     private Integer userId;
-    private String userName;
-    private String password;
-    private String phoneNumber;
-    private Timestamp register;
-    private String city;
-    private String avatar;
-    private Integer credit;
+    private String position;
 }
