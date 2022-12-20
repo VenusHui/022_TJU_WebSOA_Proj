@@ -2,6 +2,7 @@ import 'dart:html';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import '../performance/PerformanceDetail.dart';
 
 Gradient gradient = LinearGradient(
   colors: [
@@ -58,17 +59,22 @@ class _home_page_showState extends State<home_page_show> {
           Row(
             children: [
               TextButton(
-                child: Container(
-                  width: 78,
-                  height: 101,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                    image: DecorationImage(
-                        image: AssetImage('IMG_1738.JPG'), fit: BoxFit.cover),
+                  child: Container(
+                    width: 78,
+                    height: 101,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                      image: DecorationImage(
+                          image: AssetImage('IMG_1738.JPG'), fit: BoxFit.cover),
+                    ),
                   ),
-                ),
-                onPressed: null,
-              ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => PerformanceDetail(),
+                      ),
+                    );
+                  })
             ],
           )
         ],
