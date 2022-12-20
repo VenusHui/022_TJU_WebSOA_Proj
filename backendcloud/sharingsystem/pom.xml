@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ticket.ticketsystem</groupId>
-    <artifactId>ticketsystem</artifactId>
+    <groupId>com.ticket.sharing</groupId>
+    <artifactId>sharing</artifactId>
 
     <dependencies>
         <dependency>

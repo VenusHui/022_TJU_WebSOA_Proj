@@ -5,6 +5,7 @@
     <modules>
         <module>ticketsystem</module>
         <module>backend</module>
+        <module>sharingsystem</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
