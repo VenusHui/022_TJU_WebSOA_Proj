@@ -35,7 +35,6 @@ public class OrderTicketServiceImpl implements OrderTicketService {
             ticketQueryWrapper.eq("ticket_id", ticketId);
             tickets.add(ticketMapper.selectOne((ticketQueryWrapper)));
         }
-        System.out.println(tickets);
         response.put("status", "success");
         response.put("message", tickets.size());
         response.put("data", tickets);

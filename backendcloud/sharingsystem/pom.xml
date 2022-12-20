@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ticket.sharing</groupId>
+    <groupId>com.ticket.sharingsystem</groupId>
     <artifactId>sharingsystem</artifactId>
 
     <dependencies>
