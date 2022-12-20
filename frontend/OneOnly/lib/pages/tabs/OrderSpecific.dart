@@ -8,8 +8,7 @@ class OrderSpecific extends StatefulWidget {
 }
 
 class _OrderSpecificState extends State<OrderSpecific> {
-  var imgUrl =
-      "https://7n.w3cschool.cn/statics/images/logonew2.png";
+  var imgUrl = "https://7n.w3cschool.cn/statics/images/logonew2.png";
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class _OrderSpecificState extends State<OrderSpecific> {
           image: AssetImage('assets/images/mine-bg.png'),
         ),
       ),
-      padding: const EdgeInsets.only(top: 40,left: 20,right: 20),
+      padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -47,7 +46,8 @@ class _OrderSpecificState extends State<OrderSpecific> {
                 ),
                 const Align(
                   alignment: FractionalOffset.center,
-                  child: Text('订单详情',
+                  child: Text(
+                    '订单详情',
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFFE5EDFE),
@@ -61,60 +61,64 @@ class _OrderSpecificState extends State<OrderSpecific> {
           ),
           // 订单详情盒子
           Container(
-            padding: const EdgeInsets.only(top: 20,bottom: 2),
+            padding: const EdgeInsets.only(top: 20, bottom: 2),
             height: 97,
             child: FractionallySizedBox(
               alignment: Alignment.center,
               // 宽度因子 1为占满整行
               widthFactor: 0.9,
               child:
-              // 剧场介绍
-              Row(
+                  // 剧场介绍
+                  Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   FractionallySizedBox(
-                      alignment: Alignment.center,
-                      // 宽度因子 1为占满整行
-                      heightFactor: 1,
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text('环境式驻演音乐剧《灯塔》\n「48小时内核酸入场」',
-                              style: TextStyle(
-                                fontSize: 13.0,
-                                color: Color(0xFFE5EDFE),
-                                decoration: TextDecoration.none,
+                    alignment: Alignment.center,
+                    // 宽度因子 1为占满整行
+                    heightFactor: 1,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            '环境式驻演音乐剧《灯塔》\n「48小时内核酸入场」',
+                            style: TextStyle(
+                              fontSize: 13.0,
+                              color: Color(0xFFE5EDFE),
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                '2022.11.27 19:30',
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Color(0xFF5E7092),
+                                  decoration: TextDecoration.none,
+                                ),
                               ),
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text('2022.11.27 19:30',
-                                  style: TextStyle(
-                                    fontSize: 12.0,
-                                    color: Color(0xFF5E7092),
-                                    decoration: TextDecoration.none,
-                                  ),
+                              Text(
+                                '上海｜星空间小剧场66号',
+                                style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Color(0xFF5E7092),
+                                  decoration: TextDecoration.none,
                                 ),
-                                Text('上海｜星空间小剧场66号',
-                                  style: TextStyle(
-                                    fontSize: 12.0,
-                                    color: Color(0xFF5E7092),
-                                    decoration: TextDecoration.none,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ]),
+                              ),
+                            ],
+                          ),
+                        ]),
                   ),
                   Container(
                     padding: const EdgeInsets.only(bottom: 2),
-                    height:75,
-                    width:56,
-                    child:Image.asset("assets/images/mine-order-1.png",
-                          fit: BoxFit.contain,
+                    height: 75,
+                    width: 56,
+                    child: Image.asset(
+                      "assets/images/mine-order-1.png",
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ],
@@ -123,14 +127,16 @@ class _OrderSpecificState extends State<OrderSpecific> {
           ),
           // 订单数据盒子
           Container(
-            padding: const EdgeInsets.only(top: 10,),
+            padding: const EdgeInsets.only(
+              top: 10,
+            ),
             child: FractionallySizedBox(
               alignment: Alignment.center,
               // 宽度因子 1为占满整行
               widthFactor: 0.9,
               child:
-              // 订单数据
-              Column(
+                  // 订单数据
+                  Column(
                 children: [
                   // 分割线
                   Container(
@@ -142,33 +148,35 @@ class _OrderSpecificState extends State<OrderSpecific> {
                   ),
                   // 价格
                   SizedBox(
-                      height: 29.0,
-                      child: Stack(
-                        children: const <Widget>[
-                          Align(
-                            alignment: FractionalOffset.centerLeft,
-                            child: Text('价格',
-                              style: TextStyle(
-                                fontSize: 12.0,
-                                color: Color(0xFFA8C5FF),
-                                decoration: TextDecoration.none,
-                              ),
+                    height: 29.0,
+                    child: Stack(
+                      children: const <Widget>[
+                        Align(
+                          alignment: FractionalOffset.centerLeft,
+                          child: Text(
+                            '价格',
+                            style: TextStyle(
+                              fontSize: 12.0,
+                              color: Color(0xFFA8C5FF),
+                              decoration: TextDecoration.none,
                             ),
                           ),
-                          Align(
-                            alignment: FractionalOffset.centerRight,
-                            child: Text('¥280',
-                              style: TextStyle(
-                                fontSize: 12.0,
-                                color: Color(0xFFA8C5FF),
-                                decoration: TextDecoration.none,
-                              ),
+                        ),
+                        Align(
+                          alignment: FractionalOffset.centerRight,
+                          child: Text(
+                            '¥280',
+                            style: TextStyle(
+                              fontSize: 12.0,
+                              color: Color(0xFFA8C5FF),
+                              decoration: TextDecoration.none,
                             ),
-                          )
-                        ],
-                        // 标题-订单详情
-                      ),
+                          ),
+                        )
+                      ],
+                      // 标题-订单详情
                     ),
+                  ),
                   // 分割线
                   Container(
                     height: 1.0,
@@ -184,7 +192,8 @@ class _OrderSpecificState extends State<OrderSpecific> {
                       children: const <Widget>[
                         Align(
                           alignment: FractionalOffset.centerLeft,
-                          child: Text('数量',
+                          child: Text(
+                            '数量',
                             style: TextStyle(
                               fontSize: 12.0,
                               color: Color(0xFFA8C5FF),
@@ -194,7 +203,8 @@ class _OrderSpecificState extends State<OrderSpecific> {
                         ),
                         Align(
                           alignment: FractionalOffset.centerRight,
-                          child: Text('1',
+                          child: Text(
+                            '1',
                             style: TextStyle(
                               fontSize: 12.0,
                               color: Color(0xFFA8C5FF),
@@ -221,7 +231,8 @@ class _OrderSpecificState extends State<OrderSpecific> {
                       children: const <Widget>[
                         Align(
                           alignment: FractionalOffset.centerLeft,
-                          child: Text('商品总额',
+                          child: Text(
+                            '商品总额',
                             style: TextStyle(
                               fontSize: 12.0,
                               color: Color(0xFFA8C5FF),
@@ -231,7 +242,8 @@ class _OrderSpecificState extends State<OrderSpecific> {
                         ),
                         Align(
                           alignment: FractionalOffset.centerRight,
-                          child: Text('¥280',
+                          child: Text(
+                            '¥280',
                             style: TextStyle(
                               fontSize: 12.0,
                               color: Color(0xFFA8C5FF),
@@ -258,7 +270,8 @@ class _OrderSpecificState extends State<OrderSpecific> {
                       children: const <Widget>[
                         Align(
                           alignment: FractionalOffset.centerLeft,
-                          child: Text('订单编号',
+                          child: Text(
+                            '订单编号',
                             style: TextStyle(
                               fontSize: 12.0,
                               color: Color(0xFF536383),
@@ -268,7 +281,8 @@ class _OrderSpecificState extends State<OrderSpecific> {
                         ),
                         Align(
                           alignment: FractionalOffset.centerRight,
-                          child: Text('1649387669545',
+                          child: Text(
+                            '1649387669545',
                             style: TextStyle(
                               fontSize: 12.0,
                               color: Color(0xFF536383),

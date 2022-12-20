@@ -8,8 +8,7 @@ class NewViewer extends StatefulWidget {
 }
 
 class _NewViewerState extends State<NewViewer> {
-  var imgUrl =
-      "https://7n.w3cschool.cn/statics/images/logonew2.png";
+  var imgUrl = "https://7n.w3cschool.cn/statics/images/logonew2.png";
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class _NewViewerState extends State<NewViewer> {
           image: AssetImage('assets/images/mine-bg.png'),
         ),
       ),
-      padding: const EdgeInsets.only(top: 40,left: 20,right: 20),
+      padding: const EdgeInsets.only(top: 40, left: 20, right: 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -47,7 +46,8 @@ class _NewViewerState extends State<NewViewer> {
                 ),
                 const Align(
                   alignment: FractionalOffset.center,
-                  child: Text('新增实名观演人',
+                  child: Text(
+                    '新增实名观演人',
                     style: TextStyle(
                       fontSize: 15.0,
                       color: Color(0xFFE5EDFE),
@@ -60,13 +60,13 @@ class _NewViewerState extends State<NewViewer> {
           ),
           // 新增实名观演人盒子
           Padding(
-            padding: const EdgeInsets.only(top: 15,bottom: 5),
+            padding: const EdgeInsets.only(top: 15, bottom: 5),
             child: FractionallySizedBox(
               alignment: Alignment.center,
               // 宽度因子 1为占满整行
               widthFactor: 0.9,
-              child:Container(
-                padding: const EdgeInsets.only(left: 20,right: 20),
+              child: Container(
+                padding: const EdgeInsets.only(left: 20, right: 20),
                 height: 49,
                 decoration: const BoxDecoration(
                   color: Color(0x0cA1BDF5),
@@ -83,7 +83,8 @@ class _NewViewerState extends State<NewViewer> {
                           alignment: Alignment.centerLeft,
                           width: 85,
                           padding: const EdgeInsets.only(left: 5),
-                          child: const Text('姓名',
+                          child: const Text(
+                            '姓名',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 15.0,
@@ -95,7 +96,8 @@ class _NewViewerState extends State<NewViewer> {
                         // 登录密码内容
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: const Text(' ',
+                          child: const Text(
+                            ' ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 15.0,
@@ -124,13 +126,13 @@ class _NewViewerState extends State<NewViewer> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 5,bottom: 5),
+            padding: const EdgeInsets.only(top: 5, bottom: 5),
             child: FractionallySizedBox(
               alignment: Alignment.center,
               // 宽度因子 1为占满整行
               widthFactor: 0.9,
-              child:Container(
-                padding: const EdgeInsets.only(left: 20,right: 20),
+              child: Container(
+                padding: const EdgeInsets.only(left: 20, right: 20),
                 height: 49,
                 decoration: const BoxDecoration(
                   color: Color(0x0cA1BDF5),
@@ -147,7 +149,8 @@ class _NewViewerState extends State<NewViewer> {
                           alignment: Alignment.centerLeft,
                           width: 85,
                           padding: const EdgeInsets.only(left: 5),
-                          child: const Text('身份证号',
+                          child: const Text(
+                            '身份证号',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 15.0,
@@ -159,7 +162,8 @@ class _NewViewerState extends State<NewViewer> {
                         // 登录密码内容
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: const Text(' ',
+                          child: const Text(
+                            ' ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 15.0,

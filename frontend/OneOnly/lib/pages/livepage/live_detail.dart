@@ -1,11 +1,9 @@
-import 'dart:html';
 import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/material.dart';
 
 class live_detail extends StatefulWidget {
-  final int liveid;
-  const live_detail({super.key, required this.liveid});
+  const live_detail({super.key});
 
   @override
   State<live_detail> createState() => _live_detailState();
