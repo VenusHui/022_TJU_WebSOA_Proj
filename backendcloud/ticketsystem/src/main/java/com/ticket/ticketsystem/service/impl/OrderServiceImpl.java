@@ -1,8 +1,8 @@
 package com.ticket.ticketsystem.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ticket.ticketsystem.mapper.OrderMapper;
-import com.ticket.ticketsystem.pojo.Order;
+import com.ticket.ticketsystem.mapper.OrdersMapper;
+import com.ticket.ticketsystem.pojo.Orders;
 import com.ticket.ticketsystem.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,14 +21,16 @@ import java.util.Map;
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
-    OrderMapper orderMapper;
+    OrdersMapper ordersMapper;
 
     @Override
     public Map<String, Object> getOrderByUserId(Integer userId) {
         Map<String, Object> response = new HashMap<>();
-        QueryWrapper<Order> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<Orders> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_id", userId);
-        List<Order> orders = orderMapper.selectList(queryWrapper);
+        System.out.println(userId);
+        List<Orders> orders = ordersMapper.selectList(queryWrapper);
+        System.out.println(orders);
 
         response.put("status", "success");
         response.put("message", orders.size());

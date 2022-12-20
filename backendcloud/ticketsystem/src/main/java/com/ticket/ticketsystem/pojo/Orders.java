@@ -17,7 +17,7 @@ import java.sql.Timestamp;
  * @date: 2022/12/20 14:51
  * @version: 1.0
  */
-public class Order {
+public class Orders {
     @TableId(value = "order_id", type = IdType.AUTO)
     private Integer orderId;
     private Integer userId;
