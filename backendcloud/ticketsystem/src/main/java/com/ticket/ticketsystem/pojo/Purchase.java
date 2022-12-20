@@ -18,5 +18,5 @@ import lombok.NoArgsConstructor;
 public class Purchase {
     @TableId(type = IdType.INPUT)
     private Integer orderId;
-    private Integer tickerId;
+    private Integer ticketId;
 }
