@@ -53,7 +53,7 @@ public class RegisterServiceImpl implements RegisterService {
 
         String encodedPassword = passwordEncoder.encode(password);
         Timestamp timestamp = new Timestamp(new Date().getTime());
-        User user = new User(null, userName, encodedPassword, phoneNumber, timestamp, null, 50);
+        User user = new User(null, userName, encodedPassword, phoneNumber, timestamp, null, null,50);
         userMapper.insert(user);
         Map<String, Object> data = new HashMap<>();
         data.put("user_id", user.getUserId());

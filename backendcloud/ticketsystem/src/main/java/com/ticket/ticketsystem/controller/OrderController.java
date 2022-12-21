@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author: VenusHui
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @date: 2022/12/20 15:13
  * @version: 1.0
  */
-@Controller
+@RestController
 public class OrderController {
 
     @Autowired

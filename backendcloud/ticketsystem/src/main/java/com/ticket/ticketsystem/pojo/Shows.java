@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Show {
+public class Shows {
     @TableId(value = "show_id", type = IdType.AUTO)
     private Integer showId;
     private String title;
