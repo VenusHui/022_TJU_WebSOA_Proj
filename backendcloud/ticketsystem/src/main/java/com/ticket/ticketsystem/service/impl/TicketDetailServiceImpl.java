@@ -1,10 +1,10 @@
 package com.ticket.ticketsystem.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ticket.ticketsystem.controller.mapper.HistrionicsMapper;
-import com.ticket.ticketsystem.controller.mapper.ShowsMapper;
-import com.ticket.ticketsystem.controller.mapper.TicketMapper;
-import com.ticket.ticketsystem.controller.mapper.TicketStallMapper;
+import com.ticket.ticketsystem.mapper.HistrionicsMapper;
+import com.ticket.ticketsystem.mapper.ShowsMapper;
+import com.ticket.ticketsystem.mapper.TicketMapper;
+import com.ticket.ticketsystem.mapper.TicketStallMapper;
 import com.ticket.ticketsystem.pojo.Histrionics;
 import com.ticket.ticketsystem.pojo.Shows;
 import com.ticket.ticketsystem.pojo.Ticket;

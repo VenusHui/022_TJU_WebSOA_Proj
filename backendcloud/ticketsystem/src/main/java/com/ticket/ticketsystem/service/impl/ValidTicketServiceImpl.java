@@ -1,9 +1,9 @@
 package com.ticket.ticketsystem.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ticket.ticketsystem.controller.mapper.OrdersMapper;
-import com.ticket.ticketsystem.controller.mapper.PurchaseMapper;
-import com.ticket.ticketsystem.controller.mapper.TicketMapper;
+import com.ticket.ticketsystem.mapper.OrdersMapper;
+import com.ticket.ticketsystem.mapper.PurchaseMapper;
+import com.ticket.ticketsystem.mapper.TicketMapper;
 import com.ticket.ticketsystem.pojo.Orders;
 import com.ticket.ticketsystem.pojo.Purchase;
 import com.ticket.ticketsystem.pojo.Ticket;
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class validTicketServiceImpl implements ValidTicketService {
+public class ValidTicketServiceImpl implements ValidTicketService {
 
     @Autowired
     OrdersMapper ordersMapper;
