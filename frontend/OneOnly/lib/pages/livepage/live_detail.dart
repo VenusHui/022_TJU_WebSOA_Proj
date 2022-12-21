@@ -3,16 +3,14 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class live_detail extends StatefulWidget {
-  final String live_id;
-  live_detail({Key? key, required this.live_id}) : super(key: key);
+  live_detail({Key? key}) : super(key: key);
 
   @override
-  State<live_detail> createState() => _live_detailState(this.live_id);
+  State<live_detail> createState() => _live_detailState();
 }
 
 class _live_detailState extends State<live_detail> {
-  final live_id;
-  _live_detailState(this.live_id);
+  _live_detailState();
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +50,7 @@ class _live_detailState extends State<live_detail> {
             Container(
               color: Color.fromRGBO(161, 189, 245, 0.05),
               child: Text(
-                live_id,
+                "123",
                 style: TextStyle(
                     color: Color.fromRGBO(229, 237, 254, 1), fontSize: 12),
               ),
