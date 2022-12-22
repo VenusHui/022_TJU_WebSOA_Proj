@@ -46,6 +46,8 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           file: backendcloud/backend/Dockerfile
+        run: |
+          ls -l
       
       - name: Deploy On Tencent Cloud Server
         uses: appleboy/ssh-action@master
