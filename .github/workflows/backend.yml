@@ -22,7 +22,7 @@ jobs:
           java-version: 18
 
       - name: Build with Maven
-        run: mvn clean package -pl backendcloud/backend/
+        run: mvn clean package
       
       - name: Login Docker
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
