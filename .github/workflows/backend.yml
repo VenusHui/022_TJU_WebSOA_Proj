@@ -11,17 +11,12 @@ jobs:
     name: Deployment
     runs-on: ubuntu-latest
     steps:
-      # - name: Checkout
-      # - uses: actions/checkout@v2
-      #   with:
-      #     persist-credentials: false
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       
-      # - name: Set up JDK
-      # - uses: actions/setup-java@v1
-      #   with:
-      #     java-version: 18
-      - name: Set up JDK 1.8
-      - uses: actions/checkout@v2
+      - name: Set up JDK
         uses: actions/setup-java@v1
         with:
           java-version: 18
