@@ -7,7 +7,8 @@ on:
       - 'backendcloud/backend/**'
 
 jobs:
-  deploy: Deployment
+  deploy: 
+    name: Deployment
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
