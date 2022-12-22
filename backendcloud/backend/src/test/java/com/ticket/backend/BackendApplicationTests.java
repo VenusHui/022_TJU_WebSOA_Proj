@@ -9,12 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootTest
 class BackendApplicationTests {
-	@Autowired
-	private UserMapper userMapper;
-
 	@Test
 	void contextLoads() {
-		System.out.println(userMapper.selectList(null));
 	}
 
 }
