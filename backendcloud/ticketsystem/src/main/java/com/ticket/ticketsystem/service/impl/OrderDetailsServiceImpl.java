@@ -12,33 +12,28 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class OrderDetailsImpl implements OrderDetailsService {
-
+public class OrderDetailsServiceImpl implements OrderDetailsService{
     @Autowired
     OrdersMapper ordersMapper;
 
     private final OrdersModelAssembler ordersModelAssembler;
 
-    public OrderDetailsImpl(OrdersModelAssembler ordersModelAssembler) {
+    public OrderDetailsServiceImpl(OrdersModelAssembler ordersModelAssembler){
         this.ordersModelAssembler = ordersModelAssembler;
     }
 
 
     @Override
-    public Map<String, Object> getOrderDetailsByOrderId(Integer orderId) {
+    public Map<String, Object> getOrderDetailsByOrderId(Integer orderId){
         Map<String, Object> response = new HashMap<>();
 
         QueryWrapper<Orders> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("order_id", orderId);
         Orders order = ordersMapper.selectOne(queryWrapper);
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("order", ordersModelAssembler.toModel(order));
-
         response.put("status", "success");
-        response.put("message", data.size());
-        response.put("data", data);
+        response.put("message", '1');
+        response.put("data", ordersModelAssembler.toModel(order));
         return response;
     }
-
 }
