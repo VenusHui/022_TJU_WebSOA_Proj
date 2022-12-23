@@ -7,15 +7,25 @@ on:
       - 'backendcloud/sharingsystem/**'
 
 jobs:
-  deploy: 
-    name: Deployment
+  check:
+    name: Check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           persist-credentials: false
-      
+
+  publish:
+    name: Package And Publish
+    needs: [check]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
@@ -46,7 +56,12 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           file: backendcloud/sharingsystem/Dockerfile
-      
+  
+  deploy:
+    name: Deployment
+    needs: [publish]
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy On Tencent Cloud Server
         uses: appleboy/ssh-action@master
         with: 
