@@ -7,7 +7,7 @@ on:
       - 'backendcloud/backend/**'
 
 jobs:
-  check: 
+  check:
     name: Check
     runs-on: ubuntu-latest
     steps:
@@ -18,7 +18,7 @@ jobs:
 
   deploy:
     name: Deployment
-    need: [check]
+    needs: [check]
     runs-on: ubuntu-latest
     steps:
       - name: Set up JDK
