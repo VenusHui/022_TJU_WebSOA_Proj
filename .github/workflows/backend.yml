@@ -16,8 +16,8 @@ jobs:
         with:
           persist-credentials: false
 
-  deploy:
-    name: Deployment
+  publish:
+    name: Package And Publish
     needs: [check]
     runs-on: ubuntu-latest
     steps:
@@ -51,7 +51,12 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           file: backendcloud/backend/Dockerfile
-      
+  
+  deploy:
+    name: Deployment
+    needs: [publish]
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy On Tencent Cloud Server
         uses: appleboy/ssh-action@master
         with: 
