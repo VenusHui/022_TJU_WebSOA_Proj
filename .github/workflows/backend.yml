@@ -7,15 +7,19 @@ on:
       - 'backendcloud/backend/**'
 
 jobs:
-  deploy: 
-    name: Deployment
+  check: 
+    name: Check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           persist-credentials: false
-      
+
+  deploy:
+    name: Deployment
+    need: [check]
+    runs-on: ubuntu-latest
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
