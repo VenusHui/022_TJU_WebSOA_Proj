@@ -53,4 +53,4 @@ jobs:
           host: ${{ secrets.TENCENT_CLOUD_IP }}
           username: ${{ secrets.TENCENT_CLOUD_USERNAME }}
           password: ${{ secrets.TENCENT_CLOUD_PASSWORD }}
-          script: cd ~/Ticket/backend && bash deploy.sh ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }} >> ./deploy.log
+          script: cd ~/Ticket/backendcloud/backend/ && bash deploy.sh ${{ secrets.DOCKER_USERNAME }} ${{ secrets.DOCKER_PASSWORD }} >> ./deploy.log
