@@ -2,6 +2,7 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import '../../pages/homepage/home_page_show.dart';
+import '../loginPage/login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -39,7 +40,14 @@ class _HomePageState extends State<HomePage> {
               TextButton(
                 child: CircleAvatar(
                     backgroundImage: AssetImage('assets/peeps-avatar.png')),
-                onPressed: null,
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          login_page(title: "登录"),
+                    ),
+                  );
+                },
               ),
             ],
             title: Container(
