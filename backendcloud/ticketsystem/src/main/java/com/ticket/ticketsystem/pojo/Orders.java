@@ -24,4 +24,5 @@ public class Orders {
     private Timestamp orderTime;
     private Timestamp payTime;
     private Integer status;
+    private Double price;
 }
