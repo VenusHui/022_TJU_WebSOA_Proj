@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'dart:ui';
 import 'dart:math';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -65,16 +64,17 @@ class _live_page_showState extends State<live_page_show> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (BuildContext context) => live_detail(liveid: 123),
+                  builder: (BuildContext context) => live_detail(),
                 ),
               );
             },
             child: Container(
               height: item - 89,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('livephoto1.JPG'), fit: BoxFit.cover),
-              ),
+                  image: DecorationImage(
+                image: NetworkImage(
+                    'https://bkimg.cdn.bcebos.com/pic/b8389b504fc2d562853519cf964487ef76c6a7efc6c1?x-bce-process=image/resize,m_lfit,w_536,limit_1'),
+              )),
             )),
         Container(
           height: 89,
@@ -106,7 +106,8 @@ class _live_page_showState extends State<live_page_show> {
                           padding: EdgeInsets.fromLTRB(0, 4, 0, 4),
                           decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: AssetImage('IMG_1738.JPG'),
+                                  image: NetworkImage(
+                                      'https://bkimg.cdn.bcebos.com/pic/b8389b504fc2d562853519cf964487ef76c6a7efc6c1?x-bce-process=image/resize,m_lfit,w_536,limit_1'),
                                   fit: BoxFit.cover)),
                         )),
                     Column(

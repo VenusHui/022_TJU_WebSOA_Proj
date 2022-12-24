@@ -1,17 +1,17 @@
-import 'dart:html';
 import 'dart:ui';
 import 'dart:math';
 import 'package:flutter/material.dart';
 
 class live_detail extends StatefulWidget {
-  final int liveid;
-  const live_detail({super.key, required this.liveid});
+  live_detail({Key? key}) : super(key: key);
 
   @override
   State<live_detail> createState() => _live_detailState();
 }
 
 class _live_detailState extends State<live_detail> {
+  _live_detailState();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +50,7 @@ class _live_detailState extends State<live_detail> {
             Container(
               color: Color.fromRGBO(161, 189, 245, 0.05),
               child: Text(
-                "一段内容",
+                "123",
                 style: TextStyle(
                     color: Color.fromRGBO(229, 237, 254, 1), fontSize: 12),
               ),

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Data
@@ -16,9 +17,8 @@ public class User {
     private Integer userId;
     private String userName;
     private String password;
-    private Integer userType;
     private String phoneNumber;
-    private String registerDate;
+    private Timestamp register;
     private String city;
     private Integer credit;
 }
