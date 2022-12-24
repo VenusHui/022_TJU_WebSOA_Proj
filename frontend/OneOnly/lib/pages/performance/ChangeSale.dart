@@ -112,7 +112,7 @@ class _ChangeSaleState extends State<ChangeSale> {
                                     ElevatedButton(
                                         onPressed: () {
                                           Navigator.of(context).pop();
-                                          EasyLoading.showSuccess("转卖成功");
+                                          EasyLoading.showSuccess("支付成功");
                                         },
                                         child: const Text("转卖")),
                                     const SizedBox(width: 50),
@@ -235,7 +235,7 @@ class _ChangeSaleState extends State<ChangeSale> {
                                 const SizedBox(height: 5),
                                 ElevatedButton(
                                     onPressed: () {
-                                      showInfo();
+                                      EasyLoading.showSuccess("支付成功");
                                     },
                                     child: const Text("转卖"))
                               ],

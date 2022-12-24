@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class MyTickets extends StatefulWidget {
   const MyTickets({Key? key}) : super(key: key);
@@ -60,6 +61,64 @@ class _MyTicketsState extends State<MyTickets> {
     // setState(() {
     //   list = [res];
     // });
+  }
+  showInfo() {
+    //iOS
+    showDialog<void>(
+        context: context,
+        useSafeArea: false,
+        barrierDismissible: true,
+        builder: (BuildContext context) {
+          return MaterialApp(
+              title: "loging",
+              home: Scaffold(
+                  backgroundColor: Colors.transparent,
+                  body: Container(
+                      alignment: Alignment.center,
+                      child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Container(
+                            height: 130,
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10)),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  height: 40,
+                                  width: 200,
+                                  child: TextField(
+                                    controller: textEditingController,
+                                    decoration: const InputDecoration(
+                                        hintText: "请输入转售价格"),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                          EasyLoading.showSuccess("支付成功");
+                                        },
+                                        child: const Text("转卖")),
+                                    const SizedBox(width: 50),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text("关闭"))
+                                  ],
+                                )
+                              ],
+                            ),
+                          )))));
+        });
   }
 
   void _onPageChange(int index) {
@@ -203,7 +262,9 @@ class _MyTicketsState extends State<MyTickets> {
                                         color: Color(0xffaaaaaa), fontSize: 12),
                                   ),
                                   ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        showInfo();
+                                      },
                                       child: const Text("转卖")),
                                 ],
                               ),
