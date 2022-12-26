@@ -1,9 +1,6 @@
 package com.ticket.sharingsystem.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ticket.backend.mapper.UserMapper;
-import com.ticket.backend.pojo.User;
-import com.ticket.backend.service.impl.utils.assembler.UserModelAssembler;
 import com.ticket.sharingsystem.mapper.CommentMapper;
 import com.ticket.sharingsystem.mapper.SharingMapper;
 import com.ticket.sharingsystem.pojo.Comment;
