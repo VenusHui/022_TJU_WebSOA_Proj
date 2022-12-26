@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/users/{userId}/validTicket/",
                         "/users/{userId}/orders/{orderId}",
                         "/shows/{showId}",
-                        "/users/{userId}/ticket_stall/{ticketStallId}"
+                        "/users/{userId}/ticket_stall/{ticketStallId}",
                         "/shows/{showId}",
                         "/shows"
                 ).permitAll()
