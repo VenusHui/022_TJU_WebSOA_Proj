@@ -5,12 +5,14 @@ import com.ticket.backend.service.user.LoginService;
 import com.ticket.backend.service.user.RegisterService;
 import com.ticket.backend.service.user.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
 @RestController
+@RefreshScope
 public class UserController {
 
     @Autowired
