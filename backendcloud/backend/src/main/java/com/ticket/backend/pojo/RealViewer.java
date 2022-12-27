@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class RealViewer {
     @TableId(value = "user_id", type = IdType.AUTO)
     private Integer userId;
-    private String identifyNumber;
+    private String identityNumber;
     private String phoneNumber;
+    private String name;
 }

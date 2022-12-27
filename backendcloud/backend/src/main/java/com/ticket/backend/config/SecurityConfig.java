@@ -41,7 +41,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         "/users/",
                         "/users/token/",
-                        "/users/{userId}/"
+                        "/users/{userId}/",
+                        "/users/{userId}"
                 ).permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated();
