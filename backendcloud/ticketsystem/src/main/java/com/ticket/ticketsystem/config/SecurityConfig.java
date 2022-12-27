@@ -33,7 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/shows/{showId}",
                         "/shows",
                         "/search",
-                        "/users/{userId}/tickets/{ticketId}/resale"
+                        "/users/{userId}/tickets/{ticketId}/resale",
+                        "/histrionics/{histrionicsId}/ticket_stall"
                 ).permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated();
