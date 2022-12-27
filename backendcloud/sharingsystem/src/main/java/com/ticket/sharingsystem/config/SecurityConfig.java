@@ -24,6 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/sharings",
+                            "/sharings/",
                             "/sharings/{sharingId}",
                             "/comments"
                 ).permitAll()
