@@ -28,7 +28,7 @@ public class ValidTicketServiceImpl implements ValidTicketService {
 
     @Override
     public Map<String, Object> getValidTicketByUserId(Integer userId) {
-        Map<String,Object> respoense=new HashMap<>();
+        Map<String,Object> response=new HashMap<>();
         QueryWrapper<Orders> ordersQueryWrapper=new QueryWrapper<>();
         ordersQueryWrapper.eq("user_id",userId);
         List<Orders> ordersList=ordersMapper.selectList(ordersQueryWrapper);
@@ -45,9 +45,9 @@ public class ValidTicketServiceImpl implements ValidTicketService {
                 validtickets.add(ticketMapper.selectOne(ticketQueryWrapper));
             }
         }
-        respoense.put("status","success");
-        respoense.put("message",validtickets.size());
-        respoense.put("data",validtickets);
-        return respoense;
+        response.put("status","success");
+        response.put("message",validtickets.size());
+        response.put("data",validtickets);
+        return response;
     }
 }
