@@ -25,17 +25,9 @@ public class AddCommentServiceImpl implements AddCommentService {
     @Override
     public Map<String, Object> addComment(Integer sharingId, Integer userId, String context){
         Map<String, Object> response = new HashMap<>();
-
-        System.out.println("test1");
-
         Comment comment = new Comment(null, sharingId, userId, context, 0);
 
-        System.out.println(comment);
-        System.out.println("test2");
-
         commentMapper.insert(comment);
-
-        System.out.println("test3");
 
         response.put("status", "success");
         response.put("message", "评论成功");
