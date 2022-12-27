@@ -13,6 +13,7 @@ import com.ticket.ticketsystem.service.ResaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.print.attribute.standard.JobKOctets;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -89,6 +90,18 @@ public class ResaleServiceImpl implements ResaleService {
         response.put("message",resaleList.size());
         response.put("data",resaleList);
 
+        return response;
+    }
+
+    @Override
+    public Map<String, Object> getResaleByUser(Integer userId) {
+        Map<String, Object> response=new HashMap<>();
+        QueryWrapper<Resale> resaleQueryWrapper=new QueryWrapper<>();
+        resaleQueryWrapper.eq("seller_id",userId);
+        List<Resale> resaleList=resaleMapper.selectList(resaleQueryWrapper);
+        response.put("status","success");
+        response.put("message",resaleList.size());
+        response.put("data",resaleList);
         return response;
     }
 }

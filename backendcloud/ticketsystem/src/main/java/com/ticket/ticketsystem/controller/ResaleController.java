@@ -20,4 +20,9 @@ public class ResaleController {
     public ResponseEntity<Object> getResaleByShow(@PathVariable Integer showId){
         return ResponseEntity.ok(resaleService.getResaleByShow(showId));
     }
+
+    @GetMapping("/users/{userId}/resale/")
+    public ResponseEntity<Object> getResaleByUser(@PathVariable Integer userId){
+        return ResponseEntity.ok(resaleService.getResaleByUser(userId));
+}
 }
