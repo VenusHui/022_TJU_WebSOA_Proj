@@ -25,4 +25,5 @@ public class Orders {
     private Timestamp payTime;
     private Integer status;
     private Double price;
+    private Integer histrionicsId;
 }
