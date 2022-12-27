@@ -1,16 +1,22 @@
 package com.ticket.ticketsystem.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.ticket.ticketsystem.mapper.HistrionicsMapper;
 import com.ticket.ticketsystem.mapper.ResaleMapper;
 import com.ticket.ticketsystem.mapper.TicketMapper;
+import com.ticket.ticketsystem.mapper.TicketStallMapper;
+import com.ticket.ticketsystem.pojo.Histrionics;
 import com.ticket.ticketsystem.pojo.Resale;
 import com.ticket.ticketsystem.pojo.Ticket;
+import com.ticket.ticketsystem.pojo.TicketStall;
 import com.ticket.ticketsystem.service.ResaleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -20,6 +26,12 @@ public class ResaleServiceImpl implements ResaleService {
     ResaleMapper resaleMapper;
     @Autowired
     TicketMapper ticketMapper;
+
+    @Autowired
+    HistrionicsMapper histrionicsMapper;
+
+    @Autowired
+    TicketStallMapper ticketStallMapper;
 
     @Override
     public Map<String, Object> postResale(Integer userId, Integer ticketId, Double price) {
@@ -42,6 +54,40 @@ public class ResaleServiceImpl implements ResaleService {
         // set response
         response.put("status","success");
         response.put("message","发布转卖成功");
+
+        return response;
+    }
+
+    @Override
+    public Map<String, Object> getResaleByShow(Integer showId) {
+        Map<String,Object> response=new HashMap<>();
+        // query for histrionics
+        QueryWrapper<Histrionics> histrionicsQueryWrapper=new QueryWrapper<>();
+        histrionicsQueryWrapper.eq("show_id",showId);
+        List<Histrionics> histrionicsList=histrionicsMapper.selectList(histrionicsQueryWrapper);
+
+        List<Resale> resaleList=new ArrayList<>();
+        // query for ticketStall
+        for(int i=0;i<histrionicsList.size();i++){
+            QueryWrapper<TicketStall> ticketStallQueryWrapper=new QueryWrapper<>();
+            ticketStallQueryWrapper.eq("histrionics_id",histrionicsList.get(i).getHistrionicsId());
+            List<TicketStall> ticketStallList=ticketStallMapper.selectList(ticketStallQueryWrapper);
+            for(int j=0;j<ticketStallList.size();j++){
+                QueryWrapper<Ticket> ticketQueryWrapper=new QueryWrapper<>();
+                ticketQueryWrapper.eq("ticket_stall_id",ticketStallList.get(j).getTicketStallId());
+                ticketQueryWrapper.eq("status",2);
+                List<Ticket> ticketList=ticketMapper.selectList(ticketQueryWrapper);
+                for(int k=0;k<ticketList.size();k++){
+                    QueryWrapper<Resale> resaleQueryWrapper=new QueryWrapper<>();
+                    resaleQueryWrapper.eq("ticket_id",ticketList.get(k).getTicketId());
+                    resaleList.add(resaleMapper.selectOne(resaleQueryWrapper));
+                }
+            }
+        }
+
+        response.put("status","success");
+        response.put("message",resaleList.size());
+        response.put("data",resaleList);
 
         return response;
     }
