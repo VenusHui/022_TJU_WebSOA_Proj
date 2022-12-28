@@ -1,6 +1,5 @@
 package com.ticket.sharingsystem.service.impl;
 
-import com.alibaba.nacos.shaded.org.checkerframework.checker.units.qual.C;
 import com.ticket.sharingsystem.pojo.Comment;
 import com.ticket.sharingsystem.pojo.Sharing;
 import com.ticket.sharingsystem.repository.SharingRepository;

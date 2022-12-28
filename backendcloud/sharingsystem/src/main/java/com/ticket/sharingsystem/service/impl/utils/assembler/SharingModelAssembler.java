@@ -8,7 +8,6 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
