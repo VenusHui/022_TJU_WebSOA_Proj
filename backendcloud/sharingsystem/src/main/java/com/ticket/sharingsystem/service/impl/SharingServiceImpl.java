@@ -1,5 +1,6 @@
 package com.ticket.sharingsystem.service.impl;
 
+import com.ticket.sharingsystem.pojo.Comment;
 import com.ticket.sharingsystem.pojo.Sharing;
 import com.ticket.sharingsystem.repository.SharingRepository;
 import com.ticket.sharingsystem.service.SharingService;
@@ -57,7 +58,7 @@ public class SharingServiceImpl implements SharingService {
     @Override
     public Map<String, Object> addSharing(Integer userId, Integer histrionicsId, String context, String imageUrl) {
         Map<String, Object> response = new HashMap<>();
-        Sharing sharing = new Sharing(null, histrionicsId, userId, context, imageUrl, 0, 0, new Date(), null);
+        Sharing sharing = new Sharing(null, histrionicsId, userId, context, imageUrl, 0, 0, new Date(), new ArrayList<Comment>( ));
         repository.insert(sharing);
 
         response.put("status", "success");

@@ -29,5 +29,5 @@ public class Sharing {
     private Integer stars;
     private Integer likes;
     private Date shareDate;
-    private List<Object> comments;
+    private List<Comment> comments;
 }
