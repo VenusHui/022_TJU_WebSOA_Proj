@@ -25,21 +25,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.mysql</groupId>
-            <artifactId>mysql-connector-j</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>

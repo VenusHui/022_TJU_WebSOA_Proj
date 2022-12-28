@@ -23,11 +23,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(
-                        "/sharings",
                             "/sharings/",
+<<<<<<< Updated upstream
                             "/sharings/{sharingId}",
                             "/comments",
                             "/users/{userId}/sharings"
+=======
+                            "/sharings/{sharingId}/",
+                        "/sharings/{sharingId}/comments/"
+>>>>>>> Stashed changes
                 ).permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated();
