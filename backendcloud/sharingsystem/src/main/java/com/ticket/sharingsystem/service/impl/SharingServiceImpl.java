@@ -57,7 +57,7 @@ public class SharingServiceImpl implements SharingService {
     @Override
     public Map<String, Object> addSharing(Integer userId, Integer histrionicsId, String context, String imageUrl) {
         Map<String, Object> response = new HashMap<>();
-        Sharing sharing = new Sharing(null, userId, histrionicsId, context, imageUrl, 0, 0, new Date(), null);
+        Sharing sharing = new Sharing(null, histrionicsId, userId, context, imageUrl, 0, 0, new Date(), null);
         repository.insert(sharing);
 
         response.put("status", "success");
