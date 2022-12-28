@@ -38,9 +38,7 @@ public class CommentServiceImpl implements CommentService {
             response.put("message", "_id 为" + sharingId + " 的 sharing 不存在");
             return response;
         }
-        List<Comment> comments = sharing.get().getComments().stream()
-                .map(o -> (Comment) o)
-                .collect(Collectors.toList());
+        List<Comment> comments = sharing.get().getComments();
 
         response.put("status", "success");
         response.put("message", "");
@@ -76,9 +74,7 @@ public class CommentServiceImpl implements CommentService {
             response.put("message", "_id 为" + sharingId + " 的 sharing 不存在");
             return response;
         }
-        List<Comment> comments = sharing.get().getComments().stream()
-                .map(o -> (Comment) o)
-                .collect(Collectors.toList());
+        List<Comment> comments = sharing.get().getComments();
 
         response.put("status", "success");
         response.put("message", "");
