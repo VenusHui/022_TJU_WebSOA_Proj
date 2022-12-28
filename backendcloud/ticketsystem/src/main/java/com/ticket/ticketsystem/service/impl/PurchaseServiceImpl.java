@@ -1,10 +1,7 @@
 package com.ticket.ticketsystem.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.ticket.ticketsystem.mapper.OrdersMapper;
-import com.ticket.ticketsystem.mapper.PurchaseMapper;
-import com.ticket.ticketsystem.mapper.TicketMapper;
-import com.ticket.ticketsystem.mapper.TicketStallMapper;
+import com.ticket.ticketsystem.mapper.*;
 import com.ticket.ticketsystem.pojo.Orders;
 import com.ticket.ticketsystem.pojo.Purchase;
 import com.ticket.ticketsystem.pojo.Ticket;
@@ -23,6 +20,9 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     @Autowired
     TicketStallMapper ticketStallMapper;
+
+    @Autowired
+    HistrionicsMapper histrionicsMapper;
 
     @Autowired
     TicketMapper ticketMapper;
@@ -71,7 +71,7 @@ public class PurchaseServiceImpl implements PurchaseService {
         ticketStallMapper.update(ticketStall,ticketStallQueryWrapper);
 
         double totalPrice=num*ticketStall.getPrice();
-        Orders orders=new Orders(null,userId, new Timestamp(System.currentTimeMillis()),null,1,totalPrice);
+        Orders orders=new Orders(null,userId, new Timestamp(System.currentTimeMillis()),null,1,totalPrice,ticketStall.getHistrionicsId());
         ordersMapper.insert(orders);
         for(int i=0;i<num;i++){
             Ticket ticket=new Ticket(null,ticketStallId,viewers.get(i),null,1);
