@@ -24,5 +24,11 @@ public class ResaleController {
     @GetMapping("/users/{userId}/resale/")
     public ResponseEntity<Object> getResaleByUser(@PathVariable Integer userId){
         return ResponseEntity.ok(resaleService.getResaleByUser(userId));
-}
+
+    }
+
+    @PostMapping("/users/{userId}/resales/{resaleId}")
+    public ResponseEntity<Object> purchaseResale(@PathVariable Integer userId,@PathVariable Integer resaleId){
+        return ResponseEntity.ok(resaleService.purchaseResale(userId,resaleId));
+    }
 }

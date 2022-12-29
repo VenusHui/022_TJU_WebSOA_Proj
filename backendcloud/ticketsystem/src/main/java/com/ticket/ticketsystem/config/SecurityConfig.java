@@ -36,7 +36,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/users/{userId}/tickets/{ticketId}/resale",
                         "/histrionics/{histrionicsId}/ticket_stall",
                         "/shows/{showId}/resale",
-                        "/users/{userId}/resale/"
+                        "/users/{userId}/resale/",
+                        "/users/{userId}/resales/{resaleId}"
                 ).permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated();

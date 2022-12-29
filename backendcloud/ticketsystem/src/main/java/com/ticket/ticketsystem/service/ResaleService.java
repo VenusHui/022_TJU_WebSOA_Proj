@@ -8,4 +8,6 @@ public interface ResaleService {
     public Map<String,Object> getResaleByShow(Integer showId);
 
     public Map<String,Object> getResaleByUser(Integer userId);
+
+    public Map<String,Object> purchaseResale(Integer userId,Integer resaleId);
 }

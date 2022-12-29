@@ -104,4 +104,40 @@ public class ResaleServiceImpl implements ResaleService {
         response.put("data",resaleList);
         return response;
     }
+
+    @Override
+    public Map<String, Object> purchaseResale(Integer userId, Integer resaleId) {
+        Map<String,Object> response=new HashMap<>();
+
+        QueryWrapper<Resale> resaleQueryWrapper=new QueryWrapper<>();
+        resaleQueryWrapper.eq("resale_id",resaleId);
+
+        Resale resale=resaleMapper.selectOne(resaleQueryWrapper);
+        int n_status=resale.getStatus();
+        int ticketId=resale.getTicketId();
+        if(n_status!=1){
+            response.put("status","error");
+            response.put("message","错误的转卖状态");
+            return response;
+        }
+        resale.setBuyerId(userId);
+        resale.setStatus(2);
+        resaleMapper.update(resale,resaleQueryWrapper);
+
+        QueryWrapper<Ticket> ticketQueryWrapper=new QueryWrapper<>();
+        ticketQueryWrapper.eq("ticket_id",ticketId);
+        Ticket ticket=ticketMapper.selectOne(ticketQueryWrapper);
+        n_status=ticket.getStatus();
+        if(n_status!=2){
+            response.put("status","error");
+            response.put("message","错误的票卷状态");
+            return response;
+        }
+        ticket.setStatus(3);
+        ticketMapper.update(ticket,ticketQueryWrapper);
+
+        response.put("status","success");
+        response.put("message","成功购买转卖票卷");
+        return response;
+    }
 }
