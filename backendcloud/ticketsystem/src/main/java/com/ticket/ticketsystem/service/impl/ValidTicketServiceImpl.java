@@ -47,7 +47,10 @@ public class ValidTicketServiceImpl implements ValidTicketService {
                 QueryWrapper<Ticket> ticketQueryWrapper=new QueryWrapper<>();
                 ticketQueryWrapper.eq("ticket_id",ticketId);
                 ticketQueryWrapper.eq("status",1);
-                valid_tickets.add(ticketMapper.selectOne(ticketQueryWrapper));
+                Ticket ticket=ticketMapper.selectOne(ticketQueryWrapper);
+                if(ticket!=null) {
+                    valid_tickets.add(ticket);
+                }
             }
         }
 
@@ -59,7 +62,10 @@ public class ValidTicketServiceImpl implements ValidTicketService {
             QueryWrapper<Ticket> ticketQueryWrapper=new QueryWrapper<>();
             ticketQueryWrapper.eq("ticket_id",ticketId);
             ticketQueryWrapper.eq("status",3);
-            valid_tickets.add(ticketMapper.selectOne(ticketQueryWrapper));
+            Ticket ticket=ticketMapper.selectOne(ticketQueryWrapper);
+            if(ticket!=null){
+                valid_tickets.add(ticket);
+            }
         }
 
 

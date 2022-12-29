@@ -82,6 +82,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 
         response.put("status","success");
         response.put("message","订单创建成功");
+        response.put("data",orders);
 
         return response;
     }
