@@ -2,8 +2,10 @@ package com.ticket.ticketsystem.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ticket.ticketsystem.mapper.HistrionicsMapper;
+import com.ticket.ticketsystem.mapper.ShowsMapper;
 import com.ticket.ticketsystem.mapper.TicketStallMapper;
 import com.ticket.ticketsystem.pojo.Histrionics;
+import com.ticket.ticketsystem.pojo.Shows;
 import com.ticket.ticketsystem.pojo.TicketStall;
 import com.ticket.ticketsystem.service.HistrionicsDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class HistrionicsDetailServiceImpl implements HistrionicsDetailService {
     @Autowired
     TicketStallMapper ticketStallMapper;
 
+    @Autowired
+    ShowsMapper showsMapper;
+
     @Override
     public Map<String, Object> getTicketStallByHistrionics(Integer histrionicsId) {
         Map<String,Object> response=new HashMap<>();
@@ -36,6 +41,29 @@ public class HistrionicsDetailServiceImpl implements HistrionicsDetailService {
         Histrionics histrionics=histrionicsMapper.selectOne(histrionicsQueryWrapper);
         // package for data
         data.put("ticket_stall",ticketStallList);
+        data.put("histrionics",histrionics);
+
+        response.put("status","success");
+        response.put("message",data.size());
+        response.put("data",data);
+        return response;
+    }
+
+    @Override
+    public Map<String, Object> getShowByHistrionics(Integer histrionicsId) {
+        Map<String ,Object> response=new HashMap<>();
+        Map<String,Object> data=new HashMap<>();
+        // query for histrionics
+        QueryWrapper<Histrionics> histrionicsQueryWrapper=new QueryWrapper<>();
+        histrionicsQueryWrapper.eq("histrionics_id",histrionicsId);
+        Histrionics histrionics=histrionicsMapper.selectOne(histrionicsQueryWrapper);
+        // query for show
+        int showId=histrionics.getShowId();
+        QueryWrapper<Shows> showsQueryWrapper=new QueryWrapper<>();
+        showsQueryWrapper.eq("show_id",showId);
+        Shows shows=showsMapper.selectOne(showsQueryWrapper);
+        // package for data
+        data.put("shows",shows);
         data.put("histrionics",histrionics);
 
         response.put("status","success");

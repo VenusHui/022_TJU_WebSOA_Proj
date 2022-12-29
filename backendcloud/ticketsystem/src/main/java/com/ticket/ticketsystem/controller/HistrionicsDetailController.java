@@ -12,8 +12,13 @@ public class HistrionicsDetailController {
     @Autowired
     HistrionicsDetailService histrionicsDetailService;
 
-    @GetMapping("/histrionics/{histrionicsId}/ticket_stall")
+    @GetMapping("/histrionics/{histrionicsId}/ticket_stall/")
     public ResponseEntity<Object> getTicketStallByHistrionics(@PathVariable Integer histrionicsId){
         return ResponseEntity.ok(histrionicsDetailService.getTicketStallByHistrionics(histrionicsId));
+    }
+
+    @GetMapping("/histrionics/{histrionicsId}/show/")
+    public ResponseEntity<Object> getShowByHistrionics(@PathVariable Integer histrionicsId){
+        return ResponseEntity.ok(histrionicsDetailService.getShowByHistrionics(histrionicsId));
     }
 }
