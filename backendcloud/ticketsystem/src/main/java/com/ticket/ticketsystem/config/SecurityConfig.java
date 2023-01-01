@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/users/{userId}/orders/{orderId}/tickets/",
                         "/users/{userId}/tickets/{ticketId}/",
                         "/users/{userId}/validTicket/",
-                        "/users/{userId}/orders/{orderId}",
+                        "/users/{userId}/orders/{orderId}/",
                         "/shows/{showId}/",
                         "/users/{userId}/ticket_stall/{ticketStallId}/",
                         "/shows/{showId}/",
