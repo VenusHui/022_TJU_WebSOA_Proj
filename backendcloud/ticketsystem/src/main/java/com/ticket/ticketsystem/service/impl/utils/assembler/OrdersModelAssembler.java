@@ -1,6 +1,6 @@
 package com.ticket.ticketsystem.service.impl.utils.assembler;
 
-import com.ticket.ticketsystem.controller.OrderTicketController;
+import com.ticket.ticketsystem.controller.TicketController;
 import com.ticket.ticketsystem.pojo.Orders;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
@@ -25,7 +25,7 @@ public class OrdersModelAssembler implements RepresentationModelAssembler<Orders
     @Override
     public EntityModel<Orders> toModel(Orders orders) {
         return EntityModel.of(orders,
-                linkTo(methodOn(OrderTicketController.class).getTicketsByOrderId(orders.getOrderId())).withRel("tickets"));
+                linkTo(methodOn(TicketController.class).getTicketsByOrderId(orders.getOrderId())).withRel("tickets"));
     }
 
     public CollectionModel<EntityModel<Orders>> toCollectionModel(List<Orders> ordersList) {

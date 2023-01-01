@@ -2,7 +2,6 @@ package com.ticket.ticketsystem.controller;
 
 import com.mysql.cj.xdevapi.JsonParser;
 import com.ticket.ticketsystem.service.OrderService;
-import com.ticket.ticketsystem.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,8 +26,6 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @Autowired
-    PurchaseService purchaseService;
 
     @GetMapping("/users/{userId}/orders/")
     public ResponseEntity<Object> getOrders(@PathVariable Integer userId) {
@@ -41,6 +38,12 @@ public class OrderController {
         int ticketNum=parseInt(form.get("ticket_num").toString());
         // System.out.println("Debug"+form.get("viewers_id").toString());
         List<String> viewers= (List<String>)form.get("viewers_id");
-        return ResponseEntity.ok(purchaseService.postOrder(userId,ticketStallId,ticketNum,viewers));
+        return ResponseEntity.ok(orderService.postOrder(userId,ticketStallId,ticketNum,viewers));
     }
+    @GetMapping("/users/{userId}/orders/{orderId}/")
+    public ResponseEntity<Object> getOrderDetailByOrderId(@PathVariable Integer orderId){
+        return ResponseEntity.ok(orderService.getOrderDetailByOrderId(orderId));
+    }
+
+
 }

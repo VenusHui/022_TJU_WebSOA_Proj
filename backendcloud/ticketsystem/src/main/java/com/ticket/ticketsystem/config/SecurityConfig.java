@@ -28,16 +28,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/users/{userId}/tickets/{ticketId}/",
                         "/users/{userId}/validTicket/",
                         "/users/{userId}/orders/{orderId}",
-                        "/shows/{showId}",
-                        "/users/{userId}/ticket_stall/{ticketStallId}",
-                        "/shows/{showId}",
-                        "/shows",
-                        "/search",
+                        "/shows/{showId}/",
+                        "/users/{userId}/ticket_stall/{ticketStallId}/",
+                        "/shows/{showId}/",
+                        "/shows/",
+                        "/search/",
                         "/users/{userId}/tickets/{ticketId}/resale/",
                         "/histrionics/{histrionicsId}/ticket_stall/",
                         "/shows/{showId}/resale/",
                         "/users/{userId}/resale/",
-                        "/users/{userId}/resales/{resaleId}",
+                        "/users/{userId}/resales/{resaleId}/",
                         "/histrionics/{histrionicsId}/show/"
                 ).permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()

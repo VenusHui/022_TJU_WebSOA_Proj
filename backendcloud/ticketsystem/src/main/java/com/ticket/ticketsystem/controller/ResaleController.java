@@ -10,13 +10,13 @@ public class ResaleController {
     @Autowired
     ResaleService resaleService;
 
-    @PostMapping("/users/{userId}/tickets/{ticketId}/resale")
+    @PostMapping("/users/{userId}/tickets/{ticketId}/resale/")
     public ResponseEntity<Object> postResale(@PathVariable Integer userId, @PathVariable Integer ticketId, @RequestParam(value = "resale_price") String str_price){
         Double price=Double.parseDouble(str_price);
         return ResponseEntity.ok(resaleService.postResale(userId,ticketId,price));
     }
 
-    @GetMapping("/shows/{showId}/resale")
+    @GetMapping("/shows/{showId}/resale/")
     public ResponseEntity<Object> getResaleByShow(@PathVariable Integer showId){
         return ResponseEntity.ok(resaleService.getResaleByShow(showId));
     }
@@ -27,7 +27,7 @@ public class ResaleController {
 
     }
 
-    @PostMapping("/users/{userId}/resales/{resaleId}")
+    @PostMapping("/users/{userId}/resales/{resaleId}/")
     public ResponseEntity<Object> purchaseResale(@PathVariable Integer userId,@PathVariable Integer resaleId){
         return ResponseEntity.ok(resaleService.purchaseResale(userId,resaleId));
     }
