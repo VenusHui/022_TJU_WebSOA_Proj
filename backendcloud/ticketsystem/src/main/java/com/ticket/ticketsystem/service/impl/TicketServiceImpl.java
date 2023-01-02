@@ -1,17 +1,24 @@
 package com.ticket.ticketsystem.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ticket.ticketsystem.mapper.*;
 import com.ticket.ticketsystem.pojo.*;
 import com.ticket.ticketsystem.service.TicketService;
 import com.ticket.ticketsystem.service.impl.utils.assembler.TicketModelAssembler;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.util.*;
 
 @Service
 public class TicketServiceImpl implements TicketService {
@@ -111,6 +118,57 @@ public class TicketServiceImpl implements TicketService {
         response.put("status","success");
         response.put("message",valid_tickets.size());
         response.put("data",valid_tickets);
+        return response;
+    }
+
+    @Override
+    public Map<String, Object> verifyTicket(Integer ticketId) {
+        Map<String,Object> response=new HashMap<>();
+        Map<String,Object> data=new HashMap<>();
+        CloseableHttpClient httpClient= HttpClients.createDefault();
+        Map<String,String> params=new HashMap<>();
+        params.put("key","2dabbdd2e426e48f32aa89a8d61dac3d");
+        params.put("text","ticket://"+ticketId+"#$Rd34645");
+        CloseableHttpResponse R=null;
+        try{
+            URIBuilder builder=new URIBuilder("http://apis.juhe.cn/qrcode/api");
+            Iterator paramsIt=params.entrySet().iterator();
+            while (paramsIt.hasNext()){
+                Map.Entry entry=(Map.Entry)paramsIt.next();
+                builder.addParameter((String)entry.getKey(),(String)entry.getValue());
+            }
+            HttpGet httpGet=new HttpGet(builder.build());
+            httpGet.setHeader("Content-Type","application/x-www-form-urlencoded");
+
+            R= httpClient.execute(httpGet);
+            if(R!=null&&R.getStatusLine().getStatusCode()==200){
+                String resStr= EntityUtils.toString(R.getEntity());
+                JSONObject jsonObject=JSONObject.parseObject(resStr);
+                JSONObject jsonObject1=jsonObject.getJSONObject("result");
+                //System.out.println("Debug"+jsonObject);
+                resStr=jsonObject1.getString("base64_image");
+                data.put("base64_image",resStr);
+                response.put("status","success");
+                response.put("message","验票成功");
+                response.put("data",data);
+                return response;
+            }
+        }catch (URISyntaxException e){
+            e.printStackTrace();
+        }catch (ClientProtocolException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            try{
+                httpClient.close();
+                if(R!=null){
+                    R.close();
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
         return response;
     }
 

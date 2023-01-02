@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -24,5 +25,10 @@ public class TicketController {
     @GetMapping("/users/{userId}/orders/{orderId}/tickets/")
     public ResponseEntity<Object> getTicketsByOrderId(@PathVariable Integer orderId) {
         return ResponseEntity.ok(ticketService.getTicketByOrderId(orderId));
+    }
+
+    @PostMapping("/users/{userId}/tickets/{ticketId}/")
+    public ResponseEntity<Object> verifyTicket(@PathVariable Integer userId, @PathVariable Integer ticketId){
+        return ResponseEntity.ok(ticketService.verifyTicket(ticketId));
     }
 }
