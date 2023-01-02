@@ -9,12 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class Location {
     @TableId(value = "location_id", type = IdType.AUTO)
     private Integer locationId;
     private String name;
     private String description;
+    private String image;
     private String locationType;
     private Double lat;
     private Double lng;
