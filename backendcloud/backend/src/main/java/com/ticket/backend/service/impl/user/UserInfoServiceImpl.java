@@ -97,4 +97,16 @@ public class UserInfoServiceImpl implements UserInfoService {
 
         return response;
     }
+
+    @Override
+    public Map<String, Object> putUserAvatar(Integer userId, String newAvatar) {
+        Map<String,Object> response=new HashMap<>();
+        UpdateWrapper<User> userUpdateWrapper=new UpdateWrapper<>();
+        userUpdateWrapper.set("avatar",newAvatar).eq("user_id",userId);
+        userMapper.update(null,userUpdateWrapper);
+        response.put("status","success");
+        response.put("message","用户修改头像成功");
+
+        return response;
+    }
 }

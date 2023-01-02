@@ -85,4 +85,10 @@ public class UserController {
         String newName = form.get("new_name").toString();
         return ResponseEntity.ok(userInfoService.putUserName(userId, newName));
     }
+
+    @PutMapping("/users/{userId}/avatar/")
+    public ResponseEntity<Object> putUserAvatar(@PathVariable Integer userId,@RequestParam Map<String,Object> form){
+        String newAvatar=form.get("new_avatar").toString();
+        return ResponseEntity.ok(userInfoService.putUserAvatar(userId,newAvatar));
+    }
 }

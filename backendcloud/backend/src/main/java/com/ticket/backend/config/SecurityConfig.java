@@ -45,7 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/users/{userId}",
                         "/realviewers/",
                         "/users/{userId}/name/",
-                        "/users/{userId}/city/"
+                        "/users/{userId}/city/",
+                        "/users/{userId}/avatar/"
                 ).permitAll()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated();
