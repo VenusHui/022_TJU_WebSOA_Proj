@@ -76,10 +76,14 @@ public class SharingServiceImpl implements SharingService {
             response.put("message", "_id 为" + sharingId + " 的 sharing 不存在");
             return response;
         }
-        sharing.get().setContext(context);
-        sharing.get().setImageUrl(imageUrl);
-        sharing.get().setStars(stars);
-        sharing.get().setLikes(likes);
+        if(context!=null)
+            sharing.get().setContext(context);
+        if(imageUrl!=null)
+            sharing.get().setImageUrl(imageUrl);
+        if(stars!=null)
+            sharing.get().setStars(stars);
+        if(likes!=null)
+            sharing.get().setLikes(likes);
 
         response.put("status", "success");
         response.put("message", "修改成功");

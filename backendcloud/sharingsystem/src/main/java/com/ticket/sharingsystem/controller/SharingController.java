@@ -74,10 +74,19 @@ public class SharingController {
      */
     public ResponseEntity<Object> setSharing(@PathVariable String sharingId,
                                              @RequestParam Map<String, Object> form) {
-        String context = form.get("context").toString();
-        String imageUrl = form.get("image_url").toString();
-        Integer stars = parseInt(form.get("stars").toString());
-        Integer likes = parseInt(form.get("likes").toString());
+
+        Integer stars=null;
+        Integer likes=null;
+        String imageUrl=null;
+        String context=null;
+        if(form.get("context")!=null)
+            context = form.get("context").toString();
+        if(form.get("stars")!=null)
+            stars=parseInt(form.get("stars").toString());
+        if(form.get("likes")!=null)
+            likes=parseInt(form.get("likes").toString());
+        if(form.get("image_url")!=null)
+            imageUrl=form.get("image_url").toString();
         return ResponseEntity.ok(sharingService.setSharing(sharingId, context, imageUrl, stars, likes));
     }
 }
