@@ -5,6 +5,7 @@ import com.ticket.ticketsystem.mapper.HistrionicsMapper;
 import com.ticket.ticketsystem.mapper.ShowsMapper;
 import com.ticket.ticketsystem.mapper.TicketStallMapper;
 import com.ticket.ticketsystem.pojo.Histrionics;
+import com.ticket.ticketsystem.pojo.Location;
 import com.ticket.ticketsystem.pojo.Shows;
 import com.ticket.ticketsystem.pojo.TicketStall;
 import com.ticket.ticketsystem.service.ShowsService;
@@ -149,6 +150,16 @@ public class ShowsServiceImpl implements ShowsService {
         response.put("status","success");
         response.put("message",data.size());
         response.put("data",data);
+        return response;
+    }
+
+    @Override
+    public Map<String, Object> getAllHistrionics() {
+        Map<String,Object> response=new HashMap<>();
+        List<Histrionics> histrionicsList=histrionicsMapper.selectList(null);
+        response.put("status","success");
+        response.put("message",histrionicsList.size());
+        response.put("data",histrionicsList);
         return response;
     }
 

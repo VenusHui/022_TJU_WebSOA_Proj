@@ -7,4 +7,5 @@ public interface ShowsService {
     public Map<String,Object> getTicketStall(Integer ticketStallId);
     public Map<String,Object> getTicketStallByHistrionics(Integer histrionicsId);
     public Map<String,Object> getShowByHistrionics(Integer histrionicsId);
+    public Map<String,Object> getAllHistrionics();
 }

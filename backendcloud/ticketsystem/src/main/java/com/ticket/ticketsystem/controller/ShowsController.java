@@ -37,5 +37,9 @@ public class ShowsController {
     public ResponseEntity<Object> getShowByHistrionics(@PathVariable Integer histrionicsId){
         return ResponseEntity.ok(showsService.getShowByHistrionics(histrionicsId));
     }
+    @GetMapping("/histrionics/")
+    public ResponseEntity<Object> getAllHistrionics(){
+        return ResponseEntity.ok(showsService.getAllHistrionics());
+    }
 
 }
