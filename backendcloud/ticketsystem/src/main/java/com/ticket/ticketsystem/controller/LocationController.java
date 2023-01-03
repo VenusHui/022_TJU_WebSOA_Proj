@@ -26,4 +26,9 @@ public class LocationController {
     public ResponseEntity<Object> getShowsInfo(@PathVariable Integer locationId){
         return ResponseEntity.ok(locationService.getShowsInfoByLocationId(locationId));
     }
+
+    @GetMapping("/histrionics/{histrionicsId}/location/")
+    public ResponseEntity<Object> getLocationByHistrionics(@PathVariable Integer histrionicsId){
+        return ResponseEntity.ok(locationService.getLocationsByHistrionicsId(histrionicsId));
+    }
 }

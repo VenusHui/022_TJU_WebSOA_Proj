@@ -80,4 +80,21 @@ public class LocationServiceImpl implements LocationService {
         response.put("data",data);
         return response;
     }
+
+    @Override
+    public Map<String, Object> getLocationsByHistrionicsId(Integer histrionicsId) {
+        Map<String,Object> response=new HashMap<>();
+        // query for histrionics
+        QueryWrapper<Histrionics> histrionicsQueryWrapper=new QueryWrapper<>();
+        histrionicsQueryWrapper.eq("histrionics_id",histrionicsId);
+        Histrionics histrionics=histrionicsMapper.selectOne(histrionicsQueryWrapper);
+        // query for location
+        QueryWrapper<Location> locationQueryWrapper=new QueryWrapper<>();
+        locationQueryWrapper.eq("location_id",histrionics.getLocationId());
+        Location location=locationMapper.selectOne(locationQueryWrapper);
+        // package for response
+        response.put("status","success");
+        response.put("data",location);
+        return response;
+    }
 }
