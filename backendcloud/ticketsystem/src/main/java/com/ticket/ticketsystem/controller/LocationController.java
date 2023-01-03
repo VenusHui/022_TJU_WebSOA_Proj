@@ -21,4 +21,9 @@ public class LocationController {
     public ResponseEntity<Object> getLocation(@PathVariable Integer locationId){
         return ResponseEntity.ok(locationService.getLocationsByLocationId(locationId));
     }
+
+    @GetMapping("/locations/{locationId}/shows/")
+    public ResponseEntity<Object> getShowsInfo(@PathVariable Integer locationId){
+        return ResponseEntity.ok(locationService.getShowsInfoByLocationId(locationId));
+    }
 }

@@ -40,7 +40,7 @@ public class LoginServiceImpl implements LoginService {
         data.put("token", jwt);
 
         response.put("status", "success");
-        response.put("message", "登陆成功");
+        response.put("message", "登录成功");
         response.put("data", data);
         return response;
     }
