@@ -13,13 +13,7 @@ class Tabs extends StatefulWidget {
 
 class _TabsState extends State<Tabs> {
   int _currentIndex = 0;
-  final List<Widget> _pages = [
-    //
-    HomePage(),
-    LivePage(),
-    MyTickets(),
-    Mine()
-  ];
+  final List<Widget> _pages = [HomePage(), LivePage(), MyTickets(), Mine()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -47,7 +47,26 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
-	<!-- <key>NSLocationWhenInUseUsageDescription</key> 
-	<string>此应用需要访问您的位置</string> -->
+	<key>NSLocationWhenInUseUsageDescription</key> 
+	<string>此应用需要访问您的位置</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+    <string>实时使用当前的位置信息</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>实时使用当前的位置信息</string>
+    <!--允许后台定位-->
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>location</string>
+    </array>
+	<key>NSCameraUsageDescription</key>
+	<string>Request access to camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Request access to an photos</string>
+	<key>UIStatusBarHidden</key>
+	<false/>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

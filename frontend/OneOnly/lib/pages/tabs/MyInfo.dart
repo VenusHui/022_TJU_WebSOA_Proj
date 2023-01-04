@@ -1,5 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:oneonly/models/file.dart';
 import 'package:oneonly/pages/tabs/OrderSpecific.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../api/api.dart';
+import '../../models/api_response.dart';
+import '../../utils/assets_picker.dart';
 
 class MyInfo extends StatefulWidget {
   const MyInfo({super.key});
@@ -11,6 +20,97 @@ class MyInfo extends StatefulWidget {
 class _MyInfoState extends State<MyInfo> {
   var imgUrl = "https://7n.w3cschool.cn/statics/images/logonew2.png";
 
+  late Map userInfo = {};
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    var userId = await getUserId();
+    Response entity =
+        Response.fromJson(await Api.getUserInfo(int.parse(userId)));
+    setState(() {
+      userInfo = entity.data;
+    });
+  }
+
+  //修改用户名
+  updataUserName(String userName) async {
+    var userId = await getUserId();
+    Response entity = Response.fromJson(
+        await Api.updataUserName(int.parse(userId), userName));
+    print(entity.message);
+  }
+
+  //修改城市
+  updataCity(String city) async {
+    var userId = await getUserId();
+    Response entity =
+        Response.fromJson(await Api.updataUserAddress(int.parse(userId), city));
+    print(entity.message);
+  }
+
+  ///修改头像
+  updataAvatar(String avatar) async {
+    var userId = await getUserId();
+    Response entity = Response.fromJson(
+        await Api.updataUserAvatar(int.parse(userId), avatar));
+    if (entity.status == 'success') {
+      EasyLoading.showSuccess(entity.message!);
+      getData();
+    } else {}
+    print(entity.message);
+  }
+
+  Future<String> getUserId() async {
+    String? userId;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    userId = prefs.getString('userId');
+    return userId ?? '';
+  }
+
+  ///相册
+  void _upload() async {
+    final assets = await AssetsPickers.image(
+      context: context,
+      source: ImageSource.gallery,
+      maxWidth: 512,
+      maxHeight: 512,
+    );
+    if (assets == null) return;
+    FileResponse fileResponse =
+        FileResponse.fromJson(await Api.upload(assets[0]));
+    if (fileResponse.err == 0) {
+      print('上传成功');
+      print(fileResponse.url);
+      updataAvatar(fileResponse.url!);
+    } else {
+      EasyLoading.showError(fileResponse.msg!);
+    }
+  }
+
+  ///相机
+  void _uploadCamera() async {
+    final assets = await AssetsPickers.cameraImage(
+      context: context,
+      source: ImageSource.camera,
+      maxWidth: 512,
+      maxHeight: 512,
+    );
+    if (assets == null) return;
+    FileResponse fileResponse = FileResponse.fromJson(await Api.upload(assets));
+    if (fileResponse.err == 0) {
+      print('上传成功');
+      print(fileResponse.url);
+      updataAvatar(fileResponse.url!);
+    } else {
+      EasyLoading.showError(fileResponse.msg!);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +118,7 @@ class _MyInfoState extends State<MyInfo> {
       decoration: const BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: AssetImage('images/mine-bg.png'),
+          image: AssetImage('assets/images/mine-bg.png'),
         ),
       ),
       padding: const EdgeInsets.all(10.0),
@@ -26,24 +126,24 @@ class _MyInfoState extends State<MyInfo> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           // 头像
-          Padding(
-            padding: const EdgeInsets.only(top: 53, bottom: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(35),
-                    child: Image.network(imgUrl,
-                        width: 70, height: 70, fit: BoxFit.fill)),
-              ],
+          GestureDetector(
+            onTap: () {
+              _selectImgDialog(context);
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 53, bottom: 10),
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(35),
+                  child: Image.network(userInfo['avatar'] ?? imgUrl,
+                      width: 70, height: 70, fit: BoxFit.fill)),
             ),
           ),
           // 用户名
-          const Padding(
-            padding: EdgeInsets.only(bottom: 40),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 40),
             child: Text(
-              '在云里爱与歌',
-              style: TextStyle(
+              '${userInfo['userName'] ?? ''}',
+              style: const TextStyle(
                 fontSize: 15.0,
                 color: Colors.white,
                 decoration: TextDecoration.none,
@@ -69,18 +169,11 @@ class _MyInfoState extends State<MyInfo> {
                     Navigator.pop(context);
                   },
                 ),
-                // 我的订单图标
-                Container(
-                  padding: const EdgeInsets.only(bottom: 2),
-                  height: 50,
-                  width: 40,
-                  child: Image.asset(
-                    "assets/images/mine-home-3.png",
-                    fit: BoxFit.fitWidth,
-                  ),
-                ),
               ],
             ),
+          ),
+          const SizedBox(
+            height: 20,
           ),
           // 我的订单列表
           Column(
@@ -125,10 +218,10 @@ class _MyInfoState extends State<MyInfo> {
                             // 昵称内容
                             Container(
                               alignment: Alignment.centerLeft,
-                              child: const Text(
-                                '在云里爱与歌',
+                              child: Text(
+                                '${userInfo['userName']}',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 15.0,
                                   color: Colors.white,
                                   decoration: TextDecoration.none,
@@ -259,10 +352,10 @@ class _MyInfoState extends State<MyInfo> {
                             // 常驻城市内容
                             Container(
                               alignment: Alignment.centerLeft,
-                              child: const Text(
-                                '上海',
+                              child: Text(
+                                '${userInfo['city']}',
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 15.0,
                                   color: Colors.white,
                                   decoration: TextDecoration.none,
@@ -293,5 +386,55 @@ class _MyInfoState extends State<MyInfo> {
         ],
       ),
     );
+  }
+
+  void _selectImgDialog(BuildContext context) {
+    showCupertinoModalPopup(
+        context: context,
+        builder: ((context) {
+          return CupertinoActionSheet(
+            actions: <Widget>[
+              CupertinoActionSheetAction(
+                onPressed: (() {
+                  Navigator.pop(context);
+                  _uploadCamera();
+                }),
+                child: const Text(
+                  "相机",
+                  style: TextStyle(
+                      fontSize: 12,
+                      color: const Color.fromRGBO(50, 50, 51, 1),
+                      fontWeight: FontWeight.w400),
+                ),
+              ),
+              CupertinoActionSheetAction(
+                onPressed: (() {
+                  Navigator.pop(context);
+                  _upload();
+                }),
+                child: const Text(
+                  "相册",
+                  style: TextStyle(
+                      fontSize: 12,
+                      color: Color.fromRGBO(50, 50, 51, 1),
+                      fontWeight: FontWeight.w400),
+                ),
+              ),
+            ],
+            cancelButton: CupertinoActionSheetAction(
+              onPressed: (() {
+                Navigator.pop(context);
+              }),
+              isDefaultAction: true,
+              child: const Text(
+                "取消",
+                style: TextStyle(
+                    fontSize: 12,
+                    color: Color.fromRGBO(50, 50, 51, 1),
+                    fontWeight: FontWeight.w400),
+              ),
+            ),
+          );
+        }));
   }
 }

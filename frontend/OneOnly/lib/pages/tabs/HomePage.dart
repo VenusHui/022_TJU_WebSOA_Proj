@@ -1,7 +1,6 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import '../../pages/homepage/home_page_show.dart';
+import '../loginPage/login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,48 +16,93 @@ class _HomePageState extends State<HomePage> {
     return DefaultTabController(
         length: 5,
         child: Scaffold(
-          backgroundColor: Color.fromRGBO(8, 11, 32, 1),
+          backgroundColor: const Color.fromRGBO(8, 11, 32, 1),
           appBar: AppBar(
-            backgroundColor: Color.fromRGBO(8, 11, 32, 1),
+            backgroundColor: const Color.fromRGBO(8, 11, 32, 1),
             leading: Container(
+                padding: const EdgeInsets.only(left: 12),
                 child: Row(
-              children: [
-                Text(
-                  location,
-                  style: TextStyle(color: Color.fromRGBO(161, 189, 245, 1)),
-                ),
-                IconButton(
-                  onPressed: null,
-                  icon:
-                      Icon(Icons.room, color: Color.fromRGBO(161, 189, 245, 1)),
-                  color: Color.fromRGBO(161, 189, 245, 1),
-                ),
-              ],
-            )),
+                  children: [
+                    Text(
+                      location,
+                      style: const TextStyle(
+                          color: Color.fromRGBO(161, 189, 245, 1)),
+                    ),
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    const Icon(
+                      Icons.room,
+                      size: 22,
+                    ),
+                  ],
+                )),
+            leadingWidth: 75,
             actions: <Widget>[
               TextButton(
-                child: CircleAvatar(
+                child: const CircleAvatar(
                     backgroundImage: AssetImage('assets/peeps-avatar.png')),
-                onPressed: null,
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          const login_page(title: "登录"),
+                    ),
+                  );
+                },
               ),
             ],
+            centerTitle: true,
             title: Container(
-              width: 176,
               height: 29,
-              decoration: BoxDecoration(
-                  color: Color.fromARGB(126, 91, 107, 139),
-                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromRGBO(161, 189, 245, 0.5),
-                      offset: Offset(0, 0),
-                      blurStyle: BlurStyle.inner,
-                      blurRadius: 5,
-                      spreadRadius: 0,
-                    )
-                  ]),
+              child: Row(
+                children: [
+                  Container(
+                    width: 220,
+                    height: 29,
+                    decoration: const BoxDecoration(
+                        color: Color.fromARGB(126, 91, 107, 139),
+                        borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromRGBO(161, 189, 245, 0.5),
+                            offset: Offset(0, 0),
+                            blurStyle: BlurStyle.inner,
+                            blurRadius: 5,
+                            spreadRadius: 0,
+                          )
+                        ]),
+                    child: TextField(
+                      cursorColor: Colors.green,
+                      autofocus: false,
+                      onChanged: ((value) {
+                        print(value);
+                      }),
+                      onSubmitted: (value) {
+                        print(value);
+                      },
+                      textInputAction: TextInputAction.search,
+                      style: const TextStyle(
+                        fontSize: 14.0,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w300,
+                      ),
+                      decoration: const InputDecoration(
+                        // suffixIcon: Icon(
+                        //   Icons.search,
+                        //   size: 20,
+                        // ),
+                        // suffixIconColor: Colors.black,
+                        contentPadding: EdgeInsets.only(left: 10, bottom: 12),
+                        border: InputBorder.none,
+                        hintText: '搜索',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            bottom: TabBar(
+            bottom: const TabBar(
                 unselectedLabelColor: Color.fromRGBO(94, 112, 146, 1),
                 indicatorColor: Color.fromRGBO(161, 189, 245, 1),
                 indicatorSize: TabBarIndicatorSize.label,
@@ -73,11 +117,21 @@ class _HomePageState extends State<HomePage> {
                 ]),
           ),
           body: TabBarView(children: [
-            home_page_show(),
-            home_page_show(),
-            home_page_show(),
-            home_page_show(),
-            home_page_show(),
+            home_page_show(
+              title: '综合',
+            ),
+            home_page_show(
+              title: '音乐剧',
+            ),
+            home_page_show(
+              title: '脱口秀',
+            ),
+            home_page_show(
+              title: '音乐会',
+            ),
+            home_page_show(
+              title: '舞蹈',
+            ),
           ]),
         ));
   }

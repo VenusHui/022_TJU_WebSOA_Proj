@@ -1,9 +1,26 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:oneonly/models/realviewer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../api/api.dart';
+import '../../models/api_response.dart';
 
 class SelectSit extends StatefulWidget {
-  const SelectSit({Key? key}) : super(key: key);
+  int histrionicsId;
+  String title;
+  String showPrice;
+  String image;
+
+  SelectSit(
+      {Key? key,
+      required this.histrionicsId,
+      required this.title,
+      required this.image,
+      required this.showPrice})
+      : super(key: key);
 
   @override
   _SelectSitState createState() => _SelectSitState();
@@ -15,11 +32,21 @@ class _SelectSitState extends State<SelectSit> {
   Map? selectSession;
   Map? selectPrice;
 
+  List prices = [];
+  List sessions = [];
+
+  List<Realviewer> realViewerList = [];
+
+  int ticketStallId = 0;
+  String price = '';
+  List<String> realViewer = []; //观演人
+  int purchaseQuantityNum = 0;
+  int remaining = 0;
+
+  String inputNums = '';
+
   @override
   void initState() {
-    // selectCate = cates[0];
-    // queryData();
-    //this.queryChatCircle();
     detail = {
       "image":
           "https://bkimg.cdn.bcebos.com/pic/b8389b504fc2d562853519cf964487ef76c6a7efc6c1?x-bce-process=image/resize,m_lfit,w_536,limit_1",
@@ -40,29 +67,45 @@ class _SelectSitState extends State<SelectSit> {
       "minPrice": 228,
       "maxPrice": 228
     };
+
+    initData();
   }
 
-  initData() async {}
+  initData() async {
+    ///查询场次时间信息 查询票价
+    APIResponse res = APIResponse.fromJson(
+        await Api.histrionicsDetails(widget.histrionicsId));
+    setState(() {
+      sessions.add(res.data['histrionics']['startTime']);
+      prices = res.data['ticket_stall'];
+      if (prices.isNotEmpty) {
+        ticketStallId = prices[0]['ticketStallId'];
+        remaining = prices[0]['remaining'];
+      }
+    });
 
-  void queryData() async {
-    // var res = await ApiService.searchUserByCcid(textEditingController.text);
-    // setState(() {
-    //   list = [res];
-    // });
+    ///查询观演人列表
+    var userId = await getUserId();
+    APIResponse realViewerRes =
+        APIResponse.fromJson(await Api.getRealViewer(userId.toString()));
+
+    RealviewerListResponse homeRes =
+        RealviewerListResponse.fromJson(realViewerRes.data);
+    setState(() {
+      realViewerList.clear();
+      realViewerList.addAll(homeRes.content!);
+    });
   }
 
-  void _onPageChange(int index) {
-    setState(() {});
-    // _tabController?.animateTo(index);
+  Future<String> getUserId() async {
+    String? userId;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    userId = prefs.getString('userId');
+    return userId ?? '';
   }
-
-  void SelectSit(Map item) {}
 
   @override
   Widget build(BuildContext context) {
-    List sessions = detail["sessions"];
-    List prices = detail["prices"];
-
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -93,7 +136,7 @@ class _SelectSitState extends State<SelectSit> {
                     ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.network(
-                          detail["image"],
+                          widget.image,
                           width: 80,
                           height: 120,
                           fit: BoxFit.cover,
@@ -105,7 +148,7 @@ class _SelectSitState extends State<SelectSit> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          detail["name"],
+                          widget.title,
                           maxLines: 5,
                           style: const TextStyle(
                               color: Color(0xffcccccc), fontSize: 16),
@@ -169,7 +212,7 @@ class _SelectSitState extends State<SelectSit> {
                               child: Column(
                                 children: [
                                   Text(
-                                    e["name"],
+                                    e,
                                     maxLines: 5,
                                     style: const TextStyle(
                                         color: Color(0xffffffff), fontSize: 16),
@@ -207,7 +250,9 @@ class _SelectSitState extends State<SelectSit> {
                       .map((e) => GestureDetector(
                             onTap: () {
                               setState(() {
-                                selectPrice = e;
+                                price = '';
+                                // selectPrice = e;
+                                price = e['price'].toString();
                               });
                             },
                             child: Container(
@@ -215,7 +260,7 @@ class _SelectSitState extends State<SelectSit> {
                               margin:
                                   const EdgeInsets.only(bottom: 10, right: 20),
                               decoration: BoxDecoration(
-                                  color: selectPrice == e
+                                  color: price == e['price'].toString()
                                       ? const Color(0xffaaaa00)
                                       : const Color(0xff2c2f47),
                                   borderRadius: BorderRadius.circular(10)),
@@ -234,12 +279,70 @@ class _SelectSitState extends State<SelectSit> {
                       .toList(),
                 ),
               ),
+
+              Container(
+                padding: const EdgeInsets.all(10),
+                child: Row(
+                  children: const [
+                    Text(
+                      "选择观演人",
+                      maxLines: 5,
+                      style: TextStyle(color: Color(0xffcccccc), fontSize: 17),
+                    ),
+                    SizedBox(width: 10),
+                  ],
+                ),
+              ),
+              //观演人
+              Container(
+                padding: const EdgeInsets.all(10),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    color: const Color(0xff12132b),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Wrap(
+                  direction: Axis.horizontal,
+                  children: realViewerList
+                      .map((e) => GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                e.isSelectFlag = !e.isSelectFlag!;
+                                realViewer.add(e.userId.toString());
+                              });
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              margin:
+                                  const EdgeInsets.only(bottom: 10, right: 20),
+                              decoration: BoxDecoration(
+                                  color: e.isSelectFlag!
+                                      ? const Color(0xffaaaa00)
+                                      : const Color(0xff2c2f47),
+                                  borderRadius: BorderRadius.circular(10)),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    e.name ?? '',
+                                    maxLines: 5,
+                                    style: const TextStyle(
+                                        color: Color(0xffffffff), fontSize: 16),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ))
+                      .toList(),
+                ),
+              ),
               Row(
                 children: [
                   Expanded(
                       child: ElevatedButton(
                           onPressed: () {
-                            EasyLoading.showSuccess("支付成功");
+                            // EasyLoading.showSuccess("支付成功");
+                            //校验是否有余票
+                            if (remaining <= 0) return;
+                            _inputNums(context);
                           },
                           child: const Text("去支付")))
                 ],
@@ -247,5 +350,71 @@ class _SelectSitState extends State<SelectSit> {
             ],
           ),
         )));
+  }
+
+  Future<void> _inputNums(context) async {
+    showCupertinoDialog(
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            content: Card(
+              color: Colors.white,
+              elevation: 2.0,
+              child: Column(
+                children: <Widget>[
+                  TextField(
+                    onChanged: (value) {
+                      print(value);
+                      setState(() {
+                        inputNums = value;
+                        purchaseQuantityNum = int.parse(value);
+                      });
+                    },
+                    decoration: InputDecoration(
+                        hintText: '请输入购票数量',
+                        filled: true,
+                        fillColor: Colors.grey.shade50),
+                  ),
+                ],
+              ),
+            ),
+            actions: <Widget>[
+              CupertinoDialogAction(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text('取消'),
+              ),
+              CupertinoDialogAction(
+                onPressed: () {
+                  if (inputNums.isEmpty) {
+                    print('请输入购票数量');
+                    return;
+                  }
+                  Navigator.pop(context);
+                  placeOrder();
+                },
+                child: Text('确定'),
+              ),
+            ],
+          );
+        });
+  }
+
+  placeOrder() async {
+    //校验是否选择票档
+    if (price.isEmpty) return;
+    //校验是否选择观演人
+    if (realViewer.isEmpty) return;
+    //校验是否选择购买数量
+    if (purchaseQuantityNum == 0) return;
+    var userId = await getUserId();
+    APIResponse entity = APIResponse.fromJson(await Api.userPlaceOrder(
+        int.parse(userId), ticketStallId, purchaseQuantityNum, realViewer));
+    if (entity.status == 'success') {
+      print('支付失败');
+    } else {
+      print('支付成功');
+    }
   }
 }

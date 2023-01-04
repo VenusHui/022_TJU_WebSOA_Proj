@@ -3,8 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:oneonly/pages/performance/ChangeSale.dart';
 import 'package:oneonly/pages/performance/SelectSit.dart';
 
+import '../../api/api.dart';
+import '../../models/api_response.dart';
+
 class PerformanceDetail extends StatefulWidget {
-  const PerformanceDetail({Key? key}) : super(key: key);
+  int showId;
+
+  PerformanceDetail({Key? key, required this.showId}) : super(key: key);
 
   @override
   _PerformanceDetailState createState() => _PerformanceDetailState();
@@ -14,6 +19,17 @@ class _PerformanceDetailState extends State<PerformanceDetail> {
   TextEditingController textEditingController = TextEditingController();
   late Map detail;
   late Map selectStation;
+  late Map showDetail;
+
+  List stations = [];
+
+  List histrionicsList = [];
+
+  List ticketStall = [];
+
+  int histrionicsId = 1;
+
+  int ticketStallId = 1;
 
   @override
   void initState() {
@@ -63,28 +79,33 @@ class _PerformanceDetailState extends State<PerformanceDetail> {
       "maxPrice": 228
     };
     selectStation = detail["stations"][0];
+
     initData();
   }
 
-  initData() async {}
-
-  void queryData() async {
-    // var res = await ApiService.searchUserByCcid(textEditingController.text);
-    // setState(() {
-    //   list = [res];
-    // });
+  initData() async {
+    //获取数据
+    APIResponse entity =
+        APIResponse.fromJson(await Api.showDetails(widget.showId));
+    setState(() {
+      showDetail = entity.data['show'];
+      histrionicsList = entity.data['histrionics'];
+      histrionicsId = histrionicsList[0]['histrionicsId'];
+      getHistrion();
+    });
   }
 
-  void _onPageChange(int index) {
-    setState(() {});
-    // _tabController?.animateTo(index);
+  getHistrion() async {
+    APIResponse res2 =
+        APIResponse.fromJson(await Api.histrionicsDetails(histrionicsId));
+    setState(() {
+      // stations = res2.data['histrionics'];
+      ticketStall = res2.data['ticket_stall'];
+    });
   }
-
-  void PerformanceDetail(Map item) {}
 
   @override
   Widget build(BuildContext context) {
-    List stations = detail["stations"];
     return Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
@@ -115,7 +136,7 @@ class _PerformanceDetailState extends State<PerformanceDetail> {
                     ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.network(
-                          detail["image"],
+                          showDetail["image"],
                           width: 120,
                           height: 200,
                           fit: BoxFit.cover,
@@ -127,16 +148,19 @@ class _PerformanceDetailState extends State<PerformanceDetail> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          detail["name"],
+                          showDetail["title"],
                           maxLines: 5,
                           style: const TextStyle(
                               color: Color(0xffcccccc), fontSize: 16),
                         ),
                         Text(
-                          "¥${detail["minPrice"]}-¥${detail["maxPrice"]}",
+                          // "¥${detail["minPrice"]}-¥${detail["maxPrice"]}",
+                          ticketStall.isNotEmpty
+                              ? '¥${ticketStall[0]['price'] ?? '￥0'}'
+                              : '0',
                           maxLines: 5,
                           style: const TextStyle(
-                              color: Color(0xffaa0000),
+                              color: Color.fromRGBO(241, 7, 75, 1),
                               fontSize: 16,
                               fontWeight: FontWeight.bold),
                         )
@@ -146,33 +170,34 @@ class _PerformanceDetailState extends State<PerformanceDetail> {
                 ),
               ),
               const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: stations
+              Wrap(
+                children: histrionicsList
                     .map((e) => GestureDetector(
                           onTap: () {
                             setState(() {
-                              selectStation = e;
+                              histrionicsId = e['histrionicsId'];
+                              getHistrion();
                             });
                           },
                           child: Container(
                             padding: const EdgeInsets.all(5),
+                            margin: const EdgeInsets.only(top: 10),
                             decoration: BoxDecoration(
-                                color: selectStation == e
-                                    ? const Color(0xffaaaa00)
+                                color: histrionicsId == e['histrionicsId']
+                                    ? Color.fromARGB(255, 84, 89, 97)
                                     : const Color(0xff2c2f47),
                                 borderRadius: BorderRadius.circular(10)),
                             child: Column(
                               children: [
                                 Text(
-                                  e["name"],
+                                  e["description"],
                                   maxLines: 5,
                                   style: const TextStyle(
                                       color: Color(0xffffffff), fontSize: 16),
                                 ),
                                 const SizedBox(height: 10),
                                 Text(
-                                  e["time"],
+                                  e["startTime"],
                                   maxLines: 5,
                                   style: const TextStyle(
                                       color: Color(0xffcccccc), fontSize: 12),
@@ -259,13 +284,16 @@ class _PerformanceDetailState extends State<PerformanceDetail> {
                       Navigator.of(context)
                           .push(MaterialPageRoute(builder: (context) {
                         //返回要跳转的目标页面
-                        return const ChangeSale();
+                        return ChangeSale(
+                          showId: widget.showId,
+                        );
                       }));
                     },
                     style: ButtonStyle(
                         textStyle: MaterialStateProperty.all(
                             const TextStyle(color: Colors.black)),
-                        backgroundColor: MaterialStateProperty.all(Colors.red)),
+                        backgroundColor: MaterialStateProperty.all(
+                            Color.fromRGBO(161, 189, 245, 0.7))),
                     child: const Text("看看转卖"),
                   ),
                   const SizedBox(width: 10),
@@ -275,9 +303,17 @@ class _PerformanceDetailState extends State<PerformanceDetail> {
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (context) {
                               //返回要跳转的目标页面
-                              return const SelectSit();
+                              return SelectSit(
+                                histrionicsId: histrionicsId,
+                                title: showDetail['title'],
+                                showPrice: '',
+                                image: showDetail['image'],
+                              );
                             }));
                           },
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(
+                                  Color.fromRGBO(240, 22, 85, 1))),
                           child: const Text("选座购票")))
                 ],
               )

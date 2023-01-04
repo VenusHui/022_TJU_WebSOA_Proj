@@ -1,0 +1,83 @@
+PODS:
+  - BaiduMapKit/Base (6.5.3)
+  - BaiduMapKit/Map (6.5.3):
+    - BaiduMapKit/Base
+  - BaiduMapKit/Search (6.5.3):
+    - BaiduMapKit/Base
+  - BaiduMapKit/Utils (6.5.3):
+    - BaiduMapKit/Base
+  - device_info_plus (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - flutter_baidu_mapapi_base (3.3.0):
+    - BaiduMapKit/Utils (= 6.5.3)
+    - Flutter
+  - flutter_baidu_mapapi_map (3.3.0):
+    - BaiduMapKit/Map (= 6.5.3)
+    - Flutter
+    - flutter_baidu_mapapi_base
+  - flutter_baidu_mapapi_search (3.3.0):
+    - BaiduMapKit/Search (= 6.5.3)
+    - Flutter
+    - flutter_baidu_mapapi_base
+  - flutter_baidu_mapapi_utils (3.3.0):
+    - BaiduMapKit/Utils (= 6.5.3)
+    - Flutter
+    - flutter_baidu_mapapi_base
+  - image_picker_ios (0.0.1):
+    - Flutter
+  - permission_handler_apple (9.0.4):
+    - Flutter
+  - shared_preferences_ios (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
+  - Flutter (from `Flutter`)
+  - flutter_baidu_mapapi_base (from `.symlinks/plugins/flutter_baidu_mapapi_base/ios`)
+  - flutter_baidu_mapapi_map (from `.symlinks/plugins/flutter_baidu_mapapi_map/ios`)
+  - flutter_baidu_mapapi_search (from `.symlinks/plugins/flutter_baidu_mapapi_search/ios`)
+  - flutter_baidu_mapapi_utils (from `.symlinks/plugins/flutter_baidu_mapapi_utils/ios`)
+  - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
+  - shared_preferences_ios (from `.symlinks/plugins/shared_preferences_ios/ios`)
+
+SPEC REPOS:
+  trunk:
+    - BaiduMapKit
+
+EXTERNAL SOURCES:
+  device_info_plus:
+    :path: ".symlinks/plugins/device_info_plus/ios"
+  Flutter:
+    :path: Flutter
+  flutter_baidu_mapapi_base:
+    :path: ".symlinks/plugins/flutter_baidu_mapapi_base/ios"
+  flutter_baidu_mapapi_map:
+    :path: ".symlinks/plugins/flutter_baidu_mapapi_map/ios"
+  flutter_baidu_mapapi_search:
+    :path: ".symlinks/plugins/flutter_baidu_mapapi_search/ios"
+  flutter_baidu_mapapi_utils:
+    :path: ".symlinks/plugins/flutter_baidu_mapapi_utils/ios"
+  image_picker_ios:
+    :path: ".symlinks/plugins/image_picker_ios/ios"
+  permission_handler_apple:
+    :path: ".symlinks/plugins/permission_handler_apple/ios"
+  shared_preferences_ios:
+    :path: ".symlinks/plugins/shared_preferences_ios/ios"
+
+SPEC CHECKSUMS:
+  BaiduMapKit: 54623026cd183511b1525a448094211d4fd5d646
+  device_info_plus: e5c5da33f982a436e103237c0c85f9031142abed
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_baidu_mapapi_base: 58a3649c5f54636944e771745628238ca14bc728
+  flutter_baidu_mapapi_map: 8ec980c0224ec6977d1bfeeb0cf9b8d7f38381c3
+  flutter_baidu_mapapi_search: 92e0fb884929f3efe837616f301483e2d44ca59e
+  flutter_baidu_mapapi_utils: a6ffbdf440ce49ee7ee2f515ba84f21eea25bc5a
+  image_picker_ios: b786a5dcf033a8336a657191401bfdf12017dabb
+  permission_handler_apple: 44366e37eaf29454a1e7b1b7d736c2cceaeb17ce
+  shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
+
+PODFILE CHECKSUM: 5d731ca609022afec957bf5ed6e0b03ef59adff5
+
+COCOAPODS: 1.11.3

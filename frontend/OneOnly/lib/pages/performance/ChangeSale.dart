@@ -1,11 +1,20 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../api/api.dart';
+import '../../models/api_response.dart';
 
 class ChangeSale extends StatefulWidget {
-  const ChangeSale({Key? key}) : super(key: key);
+  int showId;
+
+  ChangeSale({Key? key, required this.showId}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ChangeSaleState createState() => _ChangeSaleState();
 }
 
@@ -15,60 +24,67 @@ class _ChangeSaleState extends State<ChangeSale> {
   Map? selectSession;
   Map? selectPrice;
 
+  int resaleId = 0;
+
   @override
   void initState() {
-    // selectCate = cates[0];
-    // queryData();
-    //this.queryChatCircle();
-    list = [
-      {
-        "image":
-            "https://bkimg.cdn.bcebos.com/pic/b8389b504fc2d562853519cf964487ef76c6a7efc6c1?x-bce-process=image/resize,m_lfit,w_536,limit_1",
-        "name": "[南京]Mr.Miss2022《枕边迷航》全国巡演-南京站",
-        "time": "2022.11.27 19:30",
-        "address": "上海 | 星空间小剧场66号",
-        "price": 228,
-        "status": "交易成功",
-        "num": 1
-      },
-      {
-        "image":
-            "https://bkimg.cdn.bcebos.com/pic/b8389b504fc2d562853519cf964487ef76c6a7efc6c1?x-bce-process=image/resize,m_lfit,w_536,limit_1",
-        "name": "[南京]Mr.Miss2022《枕边迷航》全国巡演-南京站",
-        "time": "2022.11.27 19:30",
-        "address": "上海 | 星空间小剧场66号",
-        "price": 228,
-        "status": "交易成功",
-        "num": 1
-      },
-      {
-        "image":
-            "https://bkimg.cdn.bcebos.com/pic/b8389b504fc2d562853519cf964487ef76c6a7efc6c1?x-bce-process=image/resize,m_lfit,w_536,limit_1",
-        "name": "[南京]Mr.Miss2022《枕边迷航》全国巡演-南京站",
-        "time": "2022.11.27 19:30",
-        "address": "上海 | 星空间小剧场66号",
-        "price": 228,
-        "status": "交易成功",
-        "num": 1
-      }
-    ];
+    // list = [
+    //   {
+    //     "image":
+    //         "https://bkimg.cdn.bcebos.com/pic/b8389b504fc2d562853519cf964487ef76c6a7efc6c1?x-bce-process=image/resize,m_lfit,w_536,limit_1",
+    //     "name": "[南京]Mr.Miss2022《枕边迷航》全国巡演-南京站",
+    //     "time": "2022.11.27 19:30",
+    //     "address": "上海 | 星空间小剧场66号",
+    //     "price": 228,
+    //     "status": "交易成功",
+    //     "num": 1
+    //   },
+    //   {
+    //     "image":
+    //         "https://bkimg.cdn.bcebos.com/pic/b8389b504fc2d562853519cf964487ef76c6a7efc6c1?x-bce-process=image/resize,m_lfit,w_536,limit_1",
+    //     "name": "[南京]Mr.Miss2022《枕边迷航》全国巡演-南京站",
+    //     "time": "2022.11.27 19:30",
+    //     "address": "上海 | 星空间小剧场66号",
+    //     "price": 228,
+    //     "status": "交易成功",
+    //     "num": 1
+    //   },
+    //   {
+    //     "image":
+    //         "https://bkimg.cdn.bcebos.com/pic/b8389b504fc2d562853519cf964487ef76c6a7efc6c1?x-bce-process=image/resize,m_lfit,w_536,limit_1",
+    //     "name": "[南京]Mr.Miss2022《枕边迷航》全国巡演-南京站",
+    //     "time": "2022.11.27 19:30",
+    //     "address": "上海 | 星空间小剧场66号",
+    //     "price": 228,
+    //     "status": "交易成功",
+    //     "num": 1
+    //   }
+    // ];
+
+    initData();
   }
 
-  initData() async {}
-
-  void queryData() async {
-    // var res = await ApiService.searchUserByCcid(textEditingController.text);
-    // setState(() {
-    //   list = [res];
-    // });
+  initData() async {
+    APIResponse entity =
+        APIResponse.fromJson(await Api.resaleList(widget.showId));
+    setState(() {
+      list = entity.data;
+    });
   }
 
-  void _onPageChange(int index) {
-    setState(() {});
-    // _tabController?.animateTo(index);
+  postResales(String resaleId) async {
+    var userId = await getUserId();
+    Response entity =
+        Response.fromJson(await Api.postResales(resaleId, userId));
+    print(entity.message);
   }
 
-  void ChangeSale(Map item) {}
+  Future<String> getUserId() async {
+    String? userId;
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    userId = prefs.getString('userId');
+    return userId ?? '';
+  }
 
   showInfo() {
     //iOS
@@ -112,7 +128,7 @@ class _ChangeSaleState extends State<ChangeSale> {
                                     ElevatedButton(
                                         onPressed: () {
                                           Navigator.of(context).pop();
-                                          EasyLoading.showSuccess("转卖成功");
+                                          EasyLoading.showSuccess("支付成功");
                                         },
                                         child: const Text("转卖")),
                                     const SizedBox(width: 50),
@@ -174,20 +190,20 @@ class _ChangeSaleState extends State<ChangeSale> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    e["name"],
+                                    '唐人街探案',
                                     maxLines: 1,
                                     style: const TextStyle(
                                         color: Color(0xffffffff), fontSize: 16),
                                   ),
                                   const SizedBox(height: 5),
                                   Text(
-                                    e["time"],
+                                    e["publishTime"],
                                     maxLines: 1,
                                     style: const TextStyle(
                                         color: Color(0xffaaaaaa), fontSize: 14),
                                   ),
-                                  Text(
-                                    e["address"],
+                                  const Text(
+                                    '地址',
                                     maxLines: 1,
                                     style: const TextStyle(
                                         color: Color(0xffaaaaaa), fontSize: 16),
@@ -202,8 +218,8 @@ class _ChangeSaleState extends State<ChangeSale> {
                                             color: Color(0xffffffff),
                                             fontSize: 20),
                                       ),
-                                      Text(
-                                        "/共${e["num"]}张",
+                                      const Text(
+                                        "/共1张",
                                         maxLines: 1,
                                         style: const TextStyle(
                                             color: Color(0xffaaaaaa),
@@ -217,17 +233,18 @@ class _ChangeSaleState extends State<ChangeSale> {
                             const SizedBox(height: 10),
                             Column(
                               children: [
-                                const Text(
-                                  "交易成功",
+                                Text(
+                                  e['status'] == 1 ? '交易成功' : '交易失败',
                                   maxLines: 1,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Color(0xffaaaaaa), fontSize: 12),
                                 ),
                                 const SizedBox(height: 10),
                                 ClipRRect(
                                     borderRadius: BorderRadius.circular(10),
                                     child: Image.network(
-                                      e["image"],
+                                      // 'https://bkimg.cdn.bcebos.com/pic/b8389b504fc2d562853519cf964487ef76c6a7efc6c1?x-bce-process=image/resize,m_lfit,w_536,limit_1',
+                                      'https://5b0988e595225.cdn.sohucs.com/images/20191218/baeb8aea4d8446a4850417b30ffd7abe.jpeg',
                                       width: 80,
                                       height: 100,
                                       fit: BoxFit.cover,
@@ -235,9 +252,10 @@ class _ChangeSaleState extends State<ChangeSale> {
                                 const SizedBox(height: 5),
                                 ElevatedButton(
                                     onPressed: () {
-                                      showInfo();
+                                      // EasyLoading.showSuccess("支付成功");
+                                      postResales(e['resaleId'].toString());
                                     },
-                                    child: const Text("转卖"))
+                                    child: const Text("购买"))
                               ],
                             )
                           ],
