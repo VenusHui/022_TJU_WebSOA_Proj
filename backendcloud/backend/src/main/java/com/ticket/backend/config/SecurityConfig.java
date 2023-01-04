@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/users/",
                         "/users/token/",
                         "/users/{userId}/",
-                        "/users/{userId}",
+                        "/users/{userId}/realviewers/",
                         "/realviewers/",
                         "/users/{userId}/name/",
                         "/users/{userId}/city/",

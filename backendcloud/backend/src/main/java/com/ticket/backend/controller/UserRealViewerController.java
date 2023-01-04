@@ -12,7 +12,7 @@ public class UserRealViewerController {
     @Autowired
     UserRealViewerService userRealViewerService;
 
-    @GetMapping("/users/{userId}")
+    @GetMapping("/users/{userId}/realviewers/")
     public ResponseEntity<Object> getRealViewerByUserId(@PathVariable Integer userId){
         return ResponseEntity.ok(userRealViewerService.getRealViewerByUserId(userId));
     }
