@@ -5,7 +5,6 @@ import com.ticket.ticketsystem.mapper.HistrionicsMapper;
 import com.ticket.ticketsystem.mapper.ShowsMapper;
 import com.ticket.ticketsystem.mapper.TicketStallMapper;
 import com.ticket.ticketsystem.pojo.Histrionics;
-import com.ticket.ticketsystem.pojo.Location;
 import com.ticket.ticketsystem.pojo.Shows;
 import com.ticket.ticketsystem.pojo.TicketStall;
 import com.ticket.ticketsystem.service.ShowsService;
