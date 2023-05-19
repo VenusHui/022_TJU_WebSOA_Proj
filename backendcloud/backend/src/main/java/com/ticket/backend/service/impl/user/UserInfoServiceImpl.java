@@ -29,13 +29,16 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
 
-    @Autowired
-    UserMapper userMapper;
+    private final UserMapper userMapper;
 
     private final UserModelAssembler assembler;
 
-    public UserInfoServiceImpl(UserModelAssembler assembler) {
+    @Autowired
+    public UserInfoServiceImpl(
+        UserMapper userMapper,
+        UserModelAssembler assembler) {
         this.assembler = assembler;
+        this.userMapper=userMapper;
     }
 
     @Override

@@ -20,18 +20,28 @@ import java.util.Map;
 @Service
 public class ShowsServiceImpl implements ShowsService {
 
-  @Autowired
-  ShowsMapper showsMapper;
-  @Autowired
-  HistrionicsMapper histrionicsMapper;
-  @Autowired
-  TicketStallMapper ticketStallMapper;
+  private final ShowsMapper showsMapper;
+  private final HistrionicsMapper histrionicsMapper;
+  private final  TicketStallMapper ticketStallMapper;
 
-
+//  @Autowired
+//  ShowsMapper showsMapper;
+//  @Autowired
+//  HistrionicsMapper histrionicsMapper;
+//  @Autowired
+//  TicketStallMapper ticketStallMapper;
   private ShowsModelAssembler showsModelAssembler;
 
-  public ShowsServiceImpl(ShowsModelAssembler showsModelAssembler) {
+  @Autowired
+  public ShowsServiceImpl(
+      ShowsMapper showsMapper,
+      HistrionicsMapper histrionicsMapper,
+      TicketStallMapper ticketStallMapper,
+      ShowsModelAssembler showsModelAssembler) {
     this.showsModelAssembler = showsModelAssembler;
+    this.showsMapper=showsMapper;
+    this.histrionicsMapper=histrionicsMapper;
+    this.ticketStallMapper=ticketStallMapper;
   }
 
   @Override

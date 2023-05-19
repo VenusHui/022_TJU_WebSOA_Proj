@@ -29,20 +29,25 @@ import java.util.Map;
  */
 @Service
 public class OrderServiceImpl implements OrderService {
-
-    @Autowired
-    OrdersMapper ordersMapper;
-    @Autowired
-    TicketStallMapper ticketStallMapper;
-    @Autowired
-    TicketMapper ticketMapper;
-    @Autowired
-    PurchaseMapper purchaseMapper;
+    private final OrdersMapper ordersMapper;
+    private final TicketStallMapper ticketStallMapper;
+    private final TicketMapper ticketMapper;
+    private final PurchaseMapper purchaseMapper;
 
     private final OrdersModelAssembler ordersModelAssembler;
 
-    public OrderServiceImpl(OrdersModelAssembler ordersModelAssembler) {
+    @Autowired
+    public OrderServiceImpl(
+        OrdersMapper ordersMapper,
+        TicketStallMapper ticketStallMapper,
+        TicketMapper ticketMapper,
+        PurchaseMapper purchaseMapper,
+        OrdersModelAssembler ordersModelAssembler) {
         this.ordersModelAssembler = ordersModelAssembler;
+        this.ordersMapper=ordersMapper;
+        this.ticketStallMapper=ticketStallMapper;
+        this.ticketMapper=ticketMapper;
+        this.purchaseMapper=purchaseMapper;
     }
 
 

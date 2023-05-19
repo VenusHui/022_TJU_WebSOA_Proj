@@ -19,13 +19,16 @@ import java.util.*;
  */
 public class SharingServiceImpl implements SharingService {
 
-    @Autowired
-    SharingRepository repository;
+    private final SharingRepository repository;
 
     private SharingModelAssembler assembler;
 
-    public SharingServiceImpl(SharingModelAssembler assembler) {
+    @Autowired
+    public SharingServiceImpl(
+        SharingRepository repository,
+        SharingModelAssembler assembler) {
         this.assembler = assembler;
+        this.repository=repository;
     }
 
     @Override
