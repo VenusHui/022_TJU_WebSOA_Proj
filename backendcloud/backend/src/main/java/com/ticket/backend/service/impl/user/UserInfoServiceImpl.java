@@ -76,9 +76,32 @@ public class UserInfoServiceImpl implements UserInfoService {
   public Map<String, Object> putUserCity(Integer userId, String newCity) {
     Map<String, Object> response = new HashMap<>();
 
+    // Check if userID is null
+    if (userId == null) {
+      response.put("status", "error");
+      response.put("message", "用户ID不能为空");
+      response.put("data", null);
+      return response;
+    }
+
+    if (newCity == null) {
+      response.put("status", "error");
+      response.put("message", "城市不能为空");
+      response.put("data", null);
+      return response;
+    }
+
     UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<>();
     userUpdateWrapper.set("city", newCity).eq("user_id", userId);
-    userMapper.update(null, userUpdateWrapper);
+    int rows = userMapper.update(null, userUpdateWrapper);
+
+    // Check if any row was affected
+    if (rows == 0) {
+      response.put("status", "error");
+      response.put("message", "用户不存在");
+      response.put("data", null);
+      return response;
+    }
 
     response.put("status", "success");
     response.put("message", "用户修改城市成功");
@@ -91,9 +114,32 @@ public class UserInfoServiceImpl implements UserInfoService {
   public Map<String, Object> putUserName(Integer userId, String newName) {
     Map<String, Object> response = new HashMap<>();
 
+    // Check if userID is null
+    if (userId == null) {
+      response.put("status", "error");
+      response.put("message", "用户ID不能为空");
+      response.put("data", null);
+      return response;
+    }
+
+    if (newName == null || newName.equals("")) {
+      response.put("status", "error");
+      response.put("message", "用户名不能为空");
+      response.put("data", null);
+      return response;
+    }
+
     UpdateWrapper<User> userUpdateWrapper = new UpdateWrapper<>();
     userUpdateWrapper.set("user_name", newName).eq("user_id", userId);
-    userMapper.update(null, userUpdateWrapper);
+    int rows = userMapper.update(null, userUpdateWrapper);
+
+    // Check if any row was affected
+    if (rows == 0) {
+      response.put("status", "error");
+      response.put("message", "用户不存在");
+      response.put("data", null);
+      return response;
+    }
 
     response.put("status", "success");
     response.put("message", "用户修改用户名成功");
