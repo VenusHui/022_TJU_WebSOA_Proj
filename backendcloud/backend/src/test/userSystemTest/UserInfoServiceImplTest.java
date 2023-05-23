@@ -1,4 +1,4 @@
-package ticketSystemTest;
+package userSystemTest;
 
 import com.ticket.backend.mapper.UserMapper;
 import com.ticket.backend.pojo.User;
