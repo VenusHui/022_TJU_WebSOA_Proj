@@ -1,0 +1,199 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "com.ticket.backend",
+    "children" : [ {
+      "name" : "BackendApplicationTests",
+      "children" : [ {
+        "name" : "contextLoads",
+        "uid" : "d33e18430b32f03f",
+        "parentUid" : "fe1fc43d4f4fc2dda5370c0f23b034ee",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094254691,
+          "stop" : 1687094255056,
+          "duration" : 365
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "fe1fc43d4f4fc2dda5370c0f23b034ee"
+    }, {
+      "name" : "UserInfoServiceImplTest",
+      "children" : [ {
+        "name" : "testGetUser_UserExists",
+        "uid" : "eac19ca6d819a3fc",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255121,
+          "stop" : 1687094255308,
+          "duration" : 187
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testGetUser_UserIdNull",
+        "uid" : "1ee6bed10c545e6c",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255311,
+          "stop" : 1687094255313,
+          "duration" : 2
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testPutUserCity_UserNotExists",
+        "uid" : "c76ee4d4736b6feb",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255315,
+          "stop" : 1687094255324,
+          "duration" : 9
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testGetUser_UserNotExists",
+        "uid" : "636cc0444fe15fbc",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255326,
+          "stop" : 1687094255328,
+          "duration" : 2
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testPutUserCity_Success",
+        "uid" : "e7d1df56eb3d4d0b",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255331,
+          "stop" : 1687094255333,
+          "duration" : 2
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testPutUserName_UserIDNull",
+        "uid" : "c3ab92950ad08948",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255335,
+          "stop" : 1687094255336,
+          "duration" : 1
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testPutUserCity_UserCityEmpty",
+        "uid" : "c55cd5c6035b9948",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255340,
+          "stop" : 1687094255341,
+          "duration" : 1
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testPutUserCity_UserCityNull",
+        "uid" : "de6f628e8d903b6a",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255345,
+          "stop" : 1687094255346,
+          "duration" : 1
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testPutUserName_UserNameNull",
+        "uid" : "46fdba1f0ebb6880",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255350,
+          "stop" : 1687094255352,
+          "duration" : 2
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testPutUserCity_UserIDNull",
+        "uid" : "c86e901b47cb2c64",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255356,
+          "stop" : 1687094255357,
+          "duration" : 1
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testPutUserName_Success",
+        "uid" : "491fc460aae65775",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255363,
+          "stop" : 1687094255365,
+          "duration" : 2
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testPutUserName_UserNotExists",
+        "uid" : "fde97ec62699072a",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255369,
+          "stop" : 1687094255371,
+          "duration" : 2
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      }, {
+        "name" : "testPutUserName_UserNameEmpty",
+        "uid" : "7b29ea3ba6edef35",
+        "parentUid" : "875b30cf38545653e9ccaae537c1642e",
+        "status" : "passed",
+        "time" : {
+          "start" : 1687094255374,
+          "stop" : 1687094255375,
+          "duration" : 1
+        },
+        "flaky" : false,
+        "newFailed" : false,
+        "parameters" : [ ]
+      } ],
+      "uid" : "875b30cf38545653e9ccaae537c1642e"
+    } ],
+    "uid" : "com.ticket.backend"
+  } ]
+}

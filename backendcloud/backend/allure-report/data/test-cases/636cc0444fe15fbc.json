@@ -1,0 +1,60 @@
+{
+  "uid" : "636cc0444fe15fbc",
+  "name" : "testGetUser_UserNotExists()",
+  "fullName" : "com.ticket.backend.UserInfoServiceImplTest.testGetUser_UserNotExists",
+  "historyId" : "10cbb1c22632066cbb09efe9572c78f5",
+  "time" : {
+    "start" : 1687094255326,
+    "stop" : 1687094255328,
+    "duration" : 2
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:com.ticket.backend.UserInfoServiceImplTest]/[method:testGetUser_UserNotExists()]"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-8VJLA9R"
+  }, {
+    "name" : "thread",
+    "value" : "23704@DESKTOP-8VJLA9R.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "com.ticket.backend.UserInfoServiceImplTest"
+  }, {
+    "name" : "testClass",
+    "value" : "com.ticket.backend.UserInfoServiceImplTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "testGetUser_UserNotExists"
+  }, {
+    "name" : "suite",
+    "value" : "com.ticket.backend.UserInfoServiceImplTest"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "636cc0444fe15fbc.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,60 @@
+{
+  "uid" : "de6f628e8d903b6a",
+  "name" : "testPutUserCity_UserCityNull()",
+  "fullName" : "com.ticket.backend.UserInfoServiceImplTest.testPutUserCity_UserCityNull",
+  "historyId" : "d224d898f91622a7606983d274d55ee4",
+  "time" : {
+    "start" : 1687094255345,
+    "stop" : 1687094255346,
+    "duration" : 1
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:com.ticket.backend.UserInfoServiceImplTest]/[method:testPutUserCity_UserCityNull()]"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-8VJLA9R"
+  }, {
+    "name" : "thread",
+    "value" : "23704@DESKTOP-8VJLA9R.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "com.ticket.backend.UserInfoServiceImplTest"
+  }, {
+    "name" : "testClass",
+    "value" : "com.ticket.backend.UserInfoServiceImplTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "testPutUserCity_UserCityNull"
+  }, {
+    "name" : "suite",
+    "value" : "com.ticket.backend.UserInfoServiceImplTest"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "de6f628e8d903b6a.json",
+  "parameterValues" : [ ]
+}

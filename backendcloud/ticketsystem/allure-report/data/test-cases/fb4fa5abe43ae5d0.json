@@ -1,0 +1,132 @@
+{
+  "uid" : "fb4fa5abe43ae5d0",
+  "name" : "getOrderByUserId_emptyResult()",
+  "fullName" : "com.ticket.ticketsystem.OrderServiceImplTest.getOrderByUserId_emptyResult",
+  "historyId" : "fc09398de12308dbfbb73f8d630c3167",
+  "time" : {
+    "start" : 1687098742913,
+    "stop" : 1687098742915,
+    "duration" : 2
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:com.ticket.ticketsystem.OrderServiceImplTest]/[method:getOrderByUserId_emptyResult()]"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-8VJLA9R"
+  }, {
+    "name" : "thread",
+    "value" : "3272@DESKTOP-8VJLA9R.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "com.ticket.ticketsystem.OrderServiceImplTest"
+  }, {
+    "name" : "testClass",
+    "value" : "com.ticket.ticketsystem.OrderServiceImplTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "getOrderByUserId_emptyResult"
+  }, {
+    "name" : "suite",
+    "value" : "com.ticket.ticketsystem.OrderServiceImplTest"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "38a26e0a36c4a9b1",
+      "status" : "failed",
+      "statusDetails" : "expected: <error> but was: <success>",
+      "time" : {
+        "start" : 1687097644762,
+        "stop" : 1687097644766,
+        "duration" : 4
+      }
+    }, {
+      "uid" : "728d760d351ff2c9",
+      "status" : "failed",
+      "statusDetails" : "expected: <error> but was: <success>",
+      "time" : {
+        "start" : 1687097255720,
+        "stop" : 1687097255726,
+        "duration" : 6
+      }
+    }, {
+      "uid" : "eae795ada252bd20",
+      "status" : "failed",
+      "statusDetails" : "expected: <error> but was: <success>",
+      "time" : {
+        "start" : 1687096269608,
+        "stop" : 1687096269617,
+        "duration" : 9
+      }
+    }, {
+      "uid" : "57fd1a63e19d3d16",
+      "status" : "failed",
+      "statusDetails" : "expected: <error> but was: <success>",
+      "time" : {
+        "start" : 1687096259467,
+        "stop" : 1687096259472,
+        "duration" : 5
+      }
+    }, {
+      "uid" : "5c34fc54ad4df49b",
+      "status" : "failed",
+      "statusDetails" : "expected: <error> but was: <success>",
+      "time" : {
+        "start" : 1687096134868,
+        "stop" : 1687096134873,
+        "duration" : 5
+      }
+    }, {
+      "uid" : "da6356b19fbb9d31",
+      "status" : "failed",
+      "statusDetails" : "expected: <error> but was: <success>",
+      "time" : {
+        "start" : 1687096034579,
+        "stop" : 1687096034584,
+        "duration" : 5
+      }
+    }, {
+      "uid" : "7843ba386203326c",
+      "status" : "failed",
+      "statusDetails" : "expected: <error> but was: <success>",
+      "time" : {
+        "start" : 1687095765995,
+        "stop" : 1687095766000,
+        "duration" : 5
+      }
+    }, {
+      "uid" : "ddb432f7dd6afee3",
+      "status" : "failed",
+      "statusDetails" : "expected: <error> but was: <success>",
+      "time" : {
+        "start" : 1687094803772,
+        "stop" : 1687094803778,
+        "duration" : 6
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "fb4fa5abe43ae5d0.json",
+  "parameterValues" : [ ]
+}

@@ -1,0 +1,58 @@
+{
+  "uid" : "1e35f43bab1899b0",
+  "name" : "postOrder_01()",
+  "fullName" : "com.ticket.ticketsystem.OrderServiceImplTest.postOrder_01",
+  "historyId" : "b6e0b717dd70b53826b60ac685f7872a",
+  "time" : {
+    "start" : 1687096034542,
+    "stop" : 1687096034544,
+    "duration" : 2
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:com.ticket.ticketsystem.OrderServiceImplTest]/[method:postOrder_01()]"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-8VJLA9R"
+  }, {
+    "name" : "thread",
+    "value" : "25196@DESKTOP-8VJLA9R.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "com.ticket.ticketsystem.OrderServiceImplTest"
+  }, {
+    "name" : "testClass",
+    "value" : "com.ticket.ticketsystem.OrderServiceImplTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "postOrder_01"
+  }, {
+    "name" : "suite",
+    "value" : "com.ticket.ticketsystem.OrderServiceImplTest"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "1e35f43bab1899b0.json",
+  "parameterValues" : [ ]
+}

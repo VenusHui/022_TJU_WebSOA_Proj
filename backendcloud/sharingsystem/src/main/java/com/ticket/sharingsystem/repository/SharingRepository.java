@@ -8,7 +8,8 @@ import java.util.List;
 
 @Repository
 public interface SharingRepository extends MongoRepository<Sharing, String> {
-    List<Sharing> findByUserId(Integer userId);
 
-    List<Sharing> findByHistrionicsId(Integer histrionicsId);
+  List<Sharing> findByUserId(Integer userId);
+
+  List<Sharing> findByHistrionicsId(Integer histrionicsId);
 }

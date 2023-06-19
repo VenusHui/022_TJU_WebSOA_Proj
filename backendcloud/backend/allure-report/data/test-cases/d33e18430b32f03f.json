@@ -1,0 +1,60 @@
+{
+  "uid" : "d33e18430b32f03f",
+  "name" : "contextLoads()",
+  "fullName" : "com.ticket.backend.BackendApplicationTests.contextLoads",
+  "historyId" : "6a27ed2b836cbdbd6e5ce3f35923f968",
+  "time" : {
+    "start" : 1687094254691,
+    "stop" : 1687094255056,
+    "duration" : 365
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:com.ticket.backend.BackendApplicationTests]/[method:contextLoads()]"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-8VJLA9R"
+  }, {
+    "name" : "thread",
+    "value" : "23704@DESKTOP-8VJLA9R.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "com.ticket.backend.BackendApplicationTests"
+  }, {
+    "name" : "testClass",
+    "value" : "com.ticket.backend.BackendApplicationTests"
+  }, {
+    "name" : "testMethod",
+    "value" : "contextLoads"
+  }, {
+    "name" : "suite",
+    "value" : "com.ticket.backend.BackendApplicationTests"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "d33e18430b32f03f.json",
+  "parameterValues" : [ ]
+}
