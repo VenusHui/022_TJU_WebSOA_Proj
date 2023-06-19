@@ -41,6 +41,7 @@ import java.util.*;
 
   @Override
   public Map<String, Object> getSharing(String sharingId) {
+    System.out.println("GGBond");
     Map<String, Object> response = new HashMap<>();
     Optional<Sharing> sharing = repository.findById(sharingId);
     if (sharing.isEmpty()) {

@@ -1,0 +1,101 @@
+[ {
+  "uid" : "ef8bc2fc4dbbf76",
+  "name" : "setSharing_test6()",
+  "time" : {
+    "start" : 1687184672892,
+    "stop" : 1687184672898,
+    "duration" : 6
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "1da04d1a3aa66987",
+  "name" : "setSharing_test2()",
+  "time" : {
+    "start" : 1687184672859,
+    "stop" : 1687184672863,
+    "duration" : 4
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "91b49581124f8de5",
+  "name" : "getSharing_test1()",
+  "time" : {
+    "start" : 1687184671606,
+    "stop" : 1687184672744,
+    "duration" : 1138
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "13c7603492975165",
+  "name" : "setSharing_test4()",
+  "time" : {
+    "start" : 1687184672875,
+    "stop" : 1687184672879,
+    "duration" : 4
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "27b8796aa92799f8",
+  "name" : "setSharing_test1()",
+  "time" : {
+    "start" : 1687184672847,
+    "stop" : 1687184672852,
+    "duration" : 5
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c27b5982dd179195",
+  "name" : "setSharing_test7()",
+  "time" : {
+    "start" : 1687184672903,
+    "stop" : 1687184672908,
+    "duration" : 5
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "71c7e89b4523f741",
+  "name" : "setSharing_test5()",
+  "time" : {
+    "start" : 1687184672885,
+    "stop" : 1687184672888,
+    "duration" : 3
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "36340092c6d03ba1",
+  "name" : "setSharing_test3()",
+  "time" : {
+    "start" : 1687184672867,
+    "stop" : 1687184672870,
+    "duration" : 3
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ff709bbd193e4930",
+  "name" : "getSharing_test2()",
+  "time" : {
+    "start" : 1687184672810,
+    "stop" : 1687184672821,
+    "duration" : 11
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4b3e50ce1bb6be76",
+  "name" : "getSharing_test3()",
+  "time" : {
+    "start" : 1687184672828,
+    "stop" : 1687184672838,
+    "duration" : 10
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

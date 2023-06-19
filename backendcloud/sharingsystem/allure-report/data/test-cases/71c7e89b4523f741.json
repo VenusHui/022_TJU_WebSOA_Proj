@@ -1,0 +1,68 @@
+{
+  "uid" : "71c7e89b4523f741",
+  "name" : "setSharing_test5()",
+  "fullName" : "com.ticket.sharingsystem.service.impl.SharingServiceImplTest.setSharing_test5",
+  "historyId" : "95506021d6cab217dcb9f4fe512d4019",
+  "time" : {
+    "start" : 1687184672885,
+    "stop" : 1687184672888,
+    "duration" : 3
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "junit.platform.uniqueid",
+    "value" : "[engine:junit-jupiter]/[class:com.ticket.sharingsystem.service.impl.SharingServiceImplTest]/[method:setSharing_test5()]"
+  }, {
+    "name" : "host",
+    "value" : "DESKTOP-8VJLA9R"
+  }, {
+    "name" : "thread",
+    "value" : "33568@DESKTOP-8VJLA9R.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "com.ticket.sharingsystem.service.impl.SharingServiceImplTest"
+  }, {
+    "name" : "testClass",
+    "value" : "com.ticket.sharingsystem.service.impl.SharingServiceImplTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "setSharing_test5"
+  }, {
+    "name" : "suite",
+    "value" : "com.ticket.sharingsystem.service.impl.SharingServiceImplTest"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "fcb05e82ff3835cb",
+      "status" : "passed",
+      "time" : {
+        "start" : 1687184651826,
+        "stop" : 1687184651830,
+        "duration" : 4
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "71c7e89b4523f741.json",
+  "parameterValues" : [ ]
+}
