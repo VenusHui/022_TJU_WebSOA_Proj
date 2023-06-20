@@ -1,11 +1,18 @@
 package com.ticket.ticketsystem.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.ticket.ticketsystem.mapper.ShowsMapper;
+import com.ticket.ticketsystem.pojo.Shows;
 import com.ticket.ticketsystem.service.ShowsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ShowsController {
@@ -40,6 +47,16 @@ public class ShowsController {
     @GetMapping("/histrionics/")
     public ResponseEntity<Object> getAllHistrionics(){
         return ResponseEntity.ok(showsService.getAllHistrionics());
+    }
+
+    @GetMapping("/shows1/")
+    public ResponseEntity<Object> getShows1() {
+        return ResponseEntity.ok(showsService.getShowDetailByCategories("喜剧"));
+    }
+
+    @GetMapping("/shows2/")
+    public ResponseEntity<Object> getShows2() {
+        return ResponseEntity.ok(showsService.getShows1to5());
     }
 
 }

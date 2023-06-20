@@ -8,4 +8,5 @@ public interface ShowsService {
     public Map<String,Object> getTicketStallByHistrionics(Integer histrionicsId);
     public Map<String,Object> getShowByHistrionics(Integer histrionicsId);
     public Map<String,Object> getAllHistrionics();
+    public Map<String,Object> getShows1to5();
 }

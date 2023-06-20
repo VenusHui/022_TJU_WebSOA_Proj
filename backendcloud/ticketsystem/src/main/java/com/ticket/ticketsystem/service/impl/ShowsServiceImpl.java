@@ -176,4 +176,14 @@ public class ShowsServiceImpl implements ShowsService {
     return response;
   }
 
+  @Override
+  public Map<String, Object> getShows1to5() {
+    Map<String, Object> response = new HashMap<>();
+    List<Shows> showsList = showsMapper.selectList(null);
+    List<Shows> newList = showsList.subList(0, 5);
+    response.put("status", "success");
+    response.put("message", newList.size());
+    response.put("data", newList);
+    return response;
+  }
 }
